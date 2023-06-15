@@ -1,12 +1,12 @@
 body {
 	font-family: 'Roboto', sans-serif;
-	background-color: #EFEFEF;
+	background-color: #dadada;
 	margin: 0;
 	padding: 0;
 }
 
 .container {
-	max-width: 600px;
+	max-width: 700px;
 	margin: 0 auto;
 	padding: 20px;
 	text-align: center;
@@ -37,6 +37,7 @@ a:hover {
 }
 
 .experience {
+	max-width: 600px;
 	text-align: left;
 	margin-top: 30px;
 }
@@ -48,6 +49,7 @@ a:hover {
 }
 
 .education {
+	max-width: 600px;
 	text-align: left;
 	margin-top: 30px;
 }
@@ -69,30 +71,38 @@ a:hover {
 }
 
 .footer {
-	background-color: #83791bec;
+	background-color: #292929ec;
+	max-width: 700px;
 	padding: 20px;
+	margin: auto;
 	color: #EFEFEF;
 	text-align: center;
 }
 
 .footer p {
 	margin: 0;
-	color: #202020;
+	color: #dadada;
 	font-size: 18px;
 	font-weight: 500;
 }
 
 .image-container {
 	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
 .image-container img {
-	width: 150px;
-	border-radius: 50%;
+  width: 150px;
+  border-radius: 50%;
+  transition: box-shadow 0.3s ease;
+}
+
+.image-container img:hover {
+  box-shadow: 0 0 10px 5px #2c2c2c38;
 }
 
 .floating-shapes {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
@@ -102,7 +112,7 @@ a:hover {
 }
 
 .shape {
-	position: absolute;
+	position: fixed;
 	border-radius: 50%;
 	animation-duration: 40s;
 	animation-timing-function: linear;
@@ -115,64 +125,64 @@ a:hover {
 	animation-name: moveCircle;
 }
 
-.square {
+.circle-l {
 	width: 120px;
 	height: 120px;
-	animation-name: moveSquare;
+	animation-name: moveCircle-l;
 }
 
 .circle-1 {
-	top: 20%;
+	top: 10%;
 	left: 15%;
 	background-color: #955E42;
 	opacity: 0.6;
 }
 
 .circle-2 {
-	top: 70%;
+	top: 55%;
 	right: 10%;
 	background-color: #070707;
 	opacity: 0.6;
 }
 
 .circle-3 {
-	top: 40%;
+	top: 35%;
 	right: 20%;
 	background-color: #83781B;
 	opacity: 0.6;
 }
 
 .circle-4 {
-	top: 100%;
+	bottom: 15%;
 	left: 5%;
 	background-color: #83781B;
 	opacity: 0.6;
 }
 
-.square-1 {
-	top: 60%;
+.circle-l-1 {
+	top: 35%;
 	left: 5%;
 	background-color: #3C6E71;
 	opacity: 0.6;
 }
 
-.square-2 {
+.circle-l-2 {
 	top: 10%;
 	right: 5%;
 	background-color: #955E42;
 	opacity: 0.6;
 }
 
-.square-3 {
-	top: 80%;
+.circle-l-3 {
+	bottom: 30%;
 	left: 20%;
 	background-color: #070707;
 	opacity: 0.6;
 }
 
-.square-4 {
-	top: 100%;
-	right: 15%;
+.circle-l-4 {
+	bottom: 10%;
+	right: 20%;
 	background-color: #3C6E71;
 	opacity: 0.6;
 }
@@ -185,7 +195,7 @@ a:hover {
 
 	50% {
 		transform: translate(100px, 100px);
-		opacity: 0.8;
+		opacity: 0.6;
 	}
 
 	100% {
@@ -194,7 +204,7 @@ a:hover {
 	}
 }
 
-@keyframes moveSquare {
+@keyframes moveCircle-l {
 	0% {
 		transform: translate(0, 0);
 		opacity: 0.45;
@@ -202,7 +212,7 @@ a:hover {
 
 	50% {
 		transform: translate(-100px, -100px);
-		opacity: 0.8;
+		opacity: 0.6;
 	}
 
 	100% {
@@ -223,7 +233,6 @@ a:hover {
 }
 
 .container,
-.footer,
 .floating-shapes {
   animation: slideIn 1.5s ease forwards;
 }
