@@ -6,7 +6,8 @@ body {
 }
 
 .container {
-	max-width: 700px;
+	max-width: 900px;
+	background-color: #ebebebea;
 	margin: 0 auto;
 	padding: 20px;
 	text-align: center;
@@ -37,7 +38,7 @@ a:hover {
 }
 
 .experience {
-	max-width: 600px;
+	max-width: 800px;
 	text-align: left;
 	margin-top: 30px;
 }
@@ -49,7 +50,7 @@ a:hover {
 }
 
 .education {
-	max-width: 600px;
+	max-width: 800px;
 	text-align: left;
 	margin-top: 30px;
 }
@@ -72,7 +73,7 @@ a:hover {
 
 .footer {
 	background-color: #292929ec;
-	max-width: 700px;
+	max-width: 900px;
 	padding: 20px;
 	margin: auto;
 	color: #EFEFEF;
@@ -133,7 +134,7 @@ a:hover {
 
 .circle-1 {
 	top: 10%;
-	left: 15%;
+	left: 12%;
 	background-color: #955E42;
 	opacity: 0.6;
 }
@@ -146,8 +147,8 @@ a:hover {
 }
 
 .circle-3 {
-	top: 35%;
-	right: 20%;
+	top: 30%;
+	right: 18%;
 	background-color: #83781B;
 	opacity: 0.6;
 }
@@ -175,14 +176,14 @@ a:hover {
 
 .circle-l-3 {
 	bottom: 30%;
-	left: 20%;
+	left: 16%;
 	background-color: #070707;
 	opacity: 0.6;
 }
 
 .circle-l-4 {
 	bottom: 10%;
-	right: 20%;
+	right: 12%;
 	background-color: #3C6E71;
 	opacity: 0.6;
 }
