@@ -1,6 +1,6 @@
 body {
 	font-family: 'Roboto', sans-serif;
-	background-color: #F5F5F5;
+	background-color: #EFEFEF;
 	margin: 0;
 	padding: 0;
 }
@@ -10,23 +10,25 @@ body {
 	margin: 0 auto;
 	padding: 20px;
 	text-align: center;
+	position: relative;
+	z-index: 1;
 }
 
 h1 {
 	font-size: 32px;
 	font-weight: 500;
-	color: #212121;
+	color: #070707;
 	margin-top: 20px;
 }
 
 p {
 	font-size: 18px;
-	color: #757575;
+	color: #212121;
 	margin-top: 10px;
 }
 
 a {
-	color: #2196F3;
+	color: #3C6E71;
 	text-decoration: none;
 }
 
@@ -41,7 +43,7 @@ a:hover {
 
 .experience h2 {
 	font-size: 24px;
-	color: #212121;
+	color: #070707;
 	margin-top: 20px;
 }
 
@@ -52,7 +54,7 @@ a:hover {
 
 .education h2 {
 	font-size: 24px;
-	color: #212121;
+	color: #070707;
 	margin-top: 20px;
 }
 
@@ -64,4 +66,147 @@ a:hover {
 
 .education li {
 	margin-bottom: 5px;
+}
+
+.footer {
+	background-color: #83791bec;
+	padding: 20px;
+	color: #EFEFEF;
+	text-align: center;
+}
+
+.footer p {
+	margin: 0;
+	color: #202020;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.image-container {
+	margin-top: 30px;
+}
+
+.image-container img {
+	width: 150px;
+	border-radius: 50%;
+}
+
+.floating-shapes {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+	pointer-events: none;
+}
+
+.shape {
+	position: absolute;
+	border-radius: 50%;
+	animation-duration: 40s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+.circle {
+	width: 100px;
+	height: 100px;
+	animation-name: moveCircle;
+}
+
+.square {
+	width: 120px;
+	height: 120px;
+	animation-name: moveSquare;
+}
+
+.circle-1 {
+	top: 20%;
+	left: 15%;
+	background-color: #955E42;
+	opacity: 0.6;
+}
+
+.circle-2 {
+	top: 70%;
+	right: 10%;
+	background-color: #070707;
+	opacity: 0.6;
+}
+
+.circle-3 {
+	top: 40%;
+	right: 20%;
+	background-color: #83781B;
+	opacity: 0.6;
+}
+
+.circle-4 {
+	top: 100%;
+	left: 5%;
+	background-color: #83781B;
+	opacity: 0.6;
+}
+
+.square-1 {
+	top: 60%;
+	left: 5%;
+	background-color: #3C6E71;
+	opacity: 0.6;
+}
+
+.square-2 {
+	top: 10%;
+	right: 5%;
+	background-color: #955E42;
+	opacity: 0.6;
+}
+
+.square-3 {
+	top: 80%;
+	left: 20%;
+	background-color: #070707;
+	opacity: 0.6;
+}
+
+.square-4 {
+	top: 100%;
+	right: 15%;
+	background-color: #3C6E71;
+	opacity: 0.6;
+}
+
+@keyframes moveCircle {
+	0% {
+		transform: translate(0, 0);
+		opacity: 0.45;
+	}
+
+	50% {
+		transform: translate(100px, 100px);
+		opacity: 0.8;
+	}
+
+	100% {
+		transform: translate(0, 0);
+		opacity: 0.45;
+	}
+}
+
+@keyframes moveSquare {
+	0% {
+		transform: translate(0, 0);
+		opacity: 0.45;
+	}
+
+	50% {
+		transform: translate(-100px, -100px);
+		opacity: 0.8;
+	}
+
+	100% {
+		transform: translate(0, 0);
+		opacity: 0.45;
+	}
 }
