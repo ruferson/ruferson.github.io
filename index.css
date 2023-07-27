@@ -37,6 +37,18 @@ a:hover {
 	text-decoration: underline;
 }
 
+.projects {
+	max-width: 800px;
+	text-align: left;
+	margin-top: 30px;
+}
+
+.projects h2 {
+	font-size: 24px;
+	color: #070707;
+	margin-top: 20px;
+}
+
 .experience {
 	max-width: 800px;
 	text-align: left;
