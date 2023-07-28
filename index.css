@@ -15,6 +15,10 @@ body {
 	z-index: 1;
 }
 
+.title {
+	margin-bottom: 40px;
+}
+
 h1 {
 	font-size: 32px;
 	font-weight: 500;
@@ -245,7 +249,37 @@ a:hover {
   }
 }
 
-.container,
+.container, .footer,
 .floating-shapes {
   animation: slideIn 1.5s ease forwards;
+}
+
+.language-selection {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-top: 30px;
+}
+
+.language-option {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 10px;
+	transition: transform 0.3s ease;
+}
+
+.language-option img {
+	width: 100px;
+	border-radius: 50%;
+}
+
+.language-option p {
+	font-size: 16px;
+	margin-top: 10px;
+}
+
+.language-option:hover {
+	transform: scale(1.1);
 }
