@@ -80,7 +80,7 @@
         <div class="flex items-center flex-wrap gap-2 text-xs">
           <!-- 4 Color Tone Selectors -->
           <div
-            class="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 p-1.5 rounded-full border border-slate-200 dark:border-slate-700"
+            class="mobile-floating-colors flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 p-1.5 rounded-full border border-slate-200 dark:border-slate-700"
           >
             <span
               class="text-[10px] font-bold text-slate-500 dark:text-slate-400 px-1 hidden sm:inline"
@@ -111,7 +111,8 @@
           <!-- Light / Dark Mode Toggle -->
           <button
             onclick="toggleDarkMode()"
-            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition"
+            title="Cambiar entre modo claro y oscuro"
+            class="mobile-floating-theme inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition"
           >
             <span class="material-symbols-outlined text-[17px]" id="theme-icon"
               >dark_mode</span
@@ -130,6 +131,51 @@
         </div>
       </div>
     </header>
+
+    <!-- Mobile Floating Controls -->
+    <div
+      class="mobile-floating-controls no-print"
+      aria-label="Controles rápidos"
+    >
+      <button
+        onclick="toggleDarkMode()"
+        title="Cambiar entre modo claro y oscuro"
+        class="mobile-floating-theme inline-flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-lg"
+      >
+        <span class="material-symbols-outlined text-[20px]" aria-hidden="true"
+          >dark_mode</span
+        >
+      </button>
+      <div
+        class="mobile-floating-colors flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 p-1.5 rounded-full border border-slate-200 dark:border-slate-700 shadow-lg"
+        aria-label="Seleccionar color"
+      >
+        <button
+          onclick="setColorTheme('emerald')"
+          title="Tono Esmeralda"
+          aria-label="Tono Esmeralda"
+          class="w-5 h-5 rounded-full bg-[#006c4c] ring-2 ring-white dark:ring-slate-900 hover:scale-110 transition shadow-xs"
+        ></button>
+        <button
+          onclick="setColorTheme('ocean')"
+          title="Tono Azul Océano"
+          aria-label="Tono Azul Océano"
+          class="w-5 h-5 rounded-full bg-[#006399] ring-2 ring-white dark:ring-slate-900 hover:scale-110 transition shadow-xs"
+        ></button>
+        <button
+          onclick="setColorTheme('indigo')"
+          title="Tono Índigo"
+          aria-label="Tono Índigo"
+          class="w-5 h-5 rounded-full bg-[#5256a9] ring-2 ring-white dark:ring-slate-900 hover:scale-110 transition shadow-xs"
+        ></button>
+        <button
+          onclick="setColorTheme('amber')"
+          title="Tono Ámbar / Terracota"
+          aria-label="Tono Ámbar / Terracota"
+          class="w-5 h-5 rounded-full bg-[#984800] ring-2 ring-white dark:ring-slate-900 hover:scale-110 transition shadow-xs"
+        ></button>
+      </div>
+    </div>
 
     <!-- Toast Notification -->
     <div

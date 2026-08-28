@@ -163,3 +163,86 @@
     color: inherit !important;
   }
 }
+
+.mobile-floating-controls {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  header {
+    top: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  header > div {
+    border-radius: 1.5rem;
+    padding: 0.625rem 0.75rem;
+  }
+
+  header > div > div:first-child,
+  header > div > div:last-child {
+    justify-content: center;
+  }
+
+  header > div > div:first-child {
+    width: 100%;
+  }
+
+  header > div > div:last-child {
+    width: 100%;
+  }
+
+  main {
+    margin-top: 1rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  main > .page-container {
+    border-radius: 1.5rem;
+    padding: 1rem;
+  }
+
+  main > .page-container > section {
+    border-radius: 1.5rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  main > .page-container > section > div > div:last-child > div:last-child {
+    gap: 0.5rem;
+  }
+
+  main > .page-container > section > div > div:last-child > div:last-child > * {
+    max-width: 100%;
+  }
+
+  header > div > div:last-child > .mobile-floating-colors,
+  header > div > div:last-child > .mobile-floating-theme {
+    display: none;
+  }
+
+  .mobile-floating-controls {
+    display: flex;
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 60;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+
+  .mobile-floating-controls .mobile-floating-theme {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  #toast {
+    bottom: 8rem;
+    left: 1rem;
+    right: 1rem;
+    justify-content: center;
+  }
+}
