@@ -1,38 +1,807 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="es" class="scroll-smooth" data-theme="emerald">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV - Rubén Fernández Sánchez</title>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Select Language</title>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="index.css">
-</head>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-<body>
-	<div class="container">
-		<h1 class="title">Select Language</h1>
-		<div class="language-selection">
-			<div class="language-option">
-				<a href="es/index.html">
-					<img src="es_flag.png" alt="Español">
-					<p>Español</p>
-				</a>
-			</div>
-			<div class="language-option">
-				<a href="en/index.html">
-					<img src="en_flag.png" alt="English">
-					<p>English</p>
-				</a>
-			</div>
-		</div>
-	</div>
-	<div class="footer">
-		<div class="email">
-			<p>Email: fs.ruben02@gmail.com</p>
-		</div>
-	</div>
-</body>
+    <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
 
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: [
+                '"Plus Jakarta Sans"',
+                "system-ui",
+                "-apple-system",
+                "sans-serif",
+              ],
+              display: ['"Space Grotesk"', "sans-serif"],
+            },
+            colors: {
+              m3: {
+                primary: "var(--m3-primary)",
+                onPrimary: "var(--m3-on-primary)",
+                primaryContainer: "var(--m3-primary-container)",
+                onPrimaryContainer: "var(--m3-on-primary-container)",
+                secondary: "var(--m3-secondary)",
+                secondaryContainer: "var(--m3-secondary-container)",
+                onSecondaryContainer: "var(--m3-on-secondary-container)",
+                surface: "var(--m3-surface)",
+                surfaceContainer: "var(--m3-surface-container)",
+                surfaceContainerHigh: "var(--m3-surface-container-high)",
+                outline: "var(--m3-outline)",
+                outlineVariant: "var(--m3-outline-variant)",
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body
+    class="bg-slate-100 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased min-h-screen transition-colors duration-300"
+  >
+    <!-- Floating Control Bar -->
+    <header class="no-print sticky top-3 z-50 max-w-5xl mx-auto px-4">
+      <div
+        class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-800 shadow-lg rounded-full px-4 py-2.5 flex flex-wrap items-center justify-between gap-3"
+      >
+        <!-- User Brand & Active Search Indicator -->
+        <div class="flex items-center gap-2">
+          <span
+            class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"
+          ></span>
+          <span
+            class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-200"
+            >Rubén Fernández • CV</span
+          >
+        </div>
+
+        <!-- Actions & Customization Controls -->
+        <div class="flex items-center flex-wrap gap-2 text-xs">
+          <!-- 4 Color Tone Selectors -->
+          <div
+            class="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 p-1.5 rounded-full border border-slate-200 dark:border-slate-700"
+          >
+            <span
+              class="text-[10px] font-bold text-slate-500 dark:text-slate-400 px-1 hidden sm:inline"
+              >Color:</span
+            >
+            <button
+              onclick="setColorTheme('emerald')"
+              title="Tono Esmeralda"
+              class="w-5 h-5 rounded-full bg-[#006c4c] ring-2 ring-white dark:ring-slate-900 hover:scale-110 transition shadow-xs"
+            ></button>
+            <button
+              onclick="setColorTheme('ocean')"
+              title="Tono Azul Océano"
+              class="w-5 h-5 rounded-full bg-[#006399] ring-2 ring-white dark:ring-slate-900 hover:scale-110 transition shadow-xs"
+            ></button>
+            <button
+              onclick="setColorTheme('indigo')"
+              title="Tono Índigo"
+              class="w-5 h-5 rounded-full bg-[#5256a9] ring-2 ring-white dark:ring-slate-900 hover:scale-110 transition shadow-xs"
+            ></button>
+            <button
+              onclick="setColorTheme('amber')"
+              title="Tono Ámbar / Terracota"
+              class="w-5 h-5 rounded-full bg-[#984800] ring-2 ring-white dark:ring-slate-900 hover:scale-110 transition shadow-xs"
+            ></button>
+          </div>
+
+          <!-- Light / Dark Mode Toggle -->
+          <button
+            onclick="toggleDarkMode()"
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition"
+          >
+            <span class="material-symbols-outlined text-[17px]" id="theme-icon"
+              >dark_mode</span
+            >
+            <span id="theme-text" class="hidden sm:inline">Modo Oscuro</span>
+          </button>
+
+          <!-- Print / Export PDF -->
+          <button
+            onclick="window.print()"
+            class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-m3-primary text-white font-bold hover:brightness-110 shadow-sm transition"
+          >
+            <span class="material-symbols-outlined text-[17px]">print</span>
+            <span>Imprimir / PDF</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Toast Notification -->
+    <div
+      id="toast"
+      class="no-print fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-xs px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-2"
+    >
+      <span
+        class="material-symbols-outlined text-emerald-400 dark:text-emerald-600 text-sm"
+        >check_circle</span
+      >
+      <span id="toast-message">Copiado al portapapeles</span>
+    </div>
+
+    <!-- Main CV Page Container -->
+    <main class="max-w-5xl mx-auto my-6 px-4 pb-12 print:my-0 print:px-0">
+      <div
+        class="page-container bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-xl overflow-hidden p-6 sm:p-10 transition-colors"
+      >
+        <!-- HERO / HEADER SECTION -->
+        <section
+          class="relative bg-m3-surfaceContainer rounded-3xl p-6 sm:p-8 border border-m3-outlineVariant/40 mb-8 overflow-hidden"
+        >
+          <div
+            class="relative flex flex-col md:flex-row items-center md:items-start gap-6"
+          >
+            <!-- Photo Placeholder (Standard <img> tag with clean fallback) -->
+            <div class="relative flex-shrink-0">
+              <div
+                class="w-32 h-32 sm:w-36 sm:h-36 rounded-3xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-md bg-slate-200 dark:bg-slate-800 flex items-center justify-center"
+              >
+                <!-- REPLACE THE SRC WITH YOUR PHOTO PATH (Ex: src="my-photo.jpg") -->
+                <img
+                  src="./profile_photo.jpeg"
+                  alt="Foto de Rubén Fernández Sánchez"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            <!-- Identity & Summary -->
+            <div class="flex-1 text-center md:text-left">
+              <div
+                class="flex flex-wrap items-center justify-center md:justify-start gap-2 mb-2"
+              >
+                <!-- Junior Developer Title Badge -->
+                <span
+                  class="px-3 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider bg-m3-primary text-white shadow-xs"
+                >
+                  Junior Developer • Frontend & Fullstack
+                </span>
+
+                <!-- Active Job Search Pill -->
+                <span
+                  class="px-3 py-0.5 rounded-full text-xs font-bold bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 flex items-center gap-1.5"
+                >
+                  <span
+                    class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"
+                  ></span>
+                  <span>Búsqueda Activa de Empleo</span>
+                </span>
+              </div>
+
+              <h1
+                class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight font-display mb-1"
+              >
+                Rubén Fernández Sánchez
+              </h1>
+
+              <p
+                class="text-sm font-medium text-slate-600 dark:text-slate-300 mb-4 max-w-2xl leading-relaxed"
+              >
+                <strong>Junior Developer</strong> entusiasmado por la ingeniería
+                de software y con una fuerte motivación por seguir aprendiendo y
+                perfeccionarme de forma continua. Cuento con capacidad versátil
+                para trabajar en
+                <strong>frontend, backend, APIs y microservicios</strong>
+                (proyectos disponibles en mi GitHub), además de ser
+                <strong
+                  >experto en el uso e integración de Inteligencia Artificial
+                  (IA) en cualquier caso de uso</strong
+                >.
+              </p>
+
+              <!-- Contact & Social Links -->
+              <div
+                class="flex flex-wrap items-center justify-center md:justify-start gap-2 pt-1 text-xs"
+              >
+                <div
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium shadow-xs"
+                >
+                  <span
+                    class="material-symbols-outlined text-m3-primary text-[17px]"
+                    >location_on</span
+                  >
+                  <span>Cartagena (Murcia), España</span>
+                </div>
+
+                <button
+                  onclick="copyToClipboard('+34644865406', 'Teléfono copiado')"
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium hover:border-m3-primary transition shadow-xs group"
+                >
+                  <span
+                    class="material-symbols-outlined text-m3-primary text-[17px]"
+                    >call</span
+                  >
+                  <span>+34 644 86 54 06</span>
+                  <span
+                    class="material-symbols-outlined text-[14px] text-slate-400 group-hover:text-m3-primary"
+                    >content_copy</span
+                  >
+                </button>
+
+                <button
+                  onclick="
+                    copyToClipboard('fs.ruben02@gmail.com', 'Email copiado')
+                  "
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium hover:border-m3-primary transition shadow-xs group"
+                >
+                  <span
+                    class="material-symbols-outlined text-m3-primary text-[17px]"
+                    >mail</span
+                  >
+                  <span>fs.ruben02@gmail.com</span>
+                  <span
+                    class="material-symbols-outlined text-[14px] text-slate-400 group-hover:text-m3-primary"
+                    >content_copy</span
+                  >
+                </button>
+
+                <!-- GitHub direct link -->
+                <a
+                  href="https://github.com/ruferson"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900 dark:bg-slate-700 text-white font-medium hover:bg-slate-800 transition shadow-xs"
+                >
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path
+                      d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+                    />
+                  </svg>
+                  <span>github.com/ruferson</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- MAIN CONTENT GRID -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- LEFT COLUMN: EXPERIENCE (7 Cols) -->
+          <div class="lg:col-span-7 space-y-6">
+            <div
+              class="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2.5"
+            >
+              <span
+                class="w-8 h-8 rounded-xl bg-m3-primaryContainer text-m3-onPrimaryContainer flex items-center justify-center"
+              >
+                <span class="material-symbols-outlined text-[20px]">work</span>
+              </span>
+              <h2
+                class="text-xl font-bold text-slate-900 dark:text-white tracking-tight font-display"
+              >
+                Experiencia Profesional
+              </h2>
+            </div>
+
+            <div
+              class="space-y-6 relative before:absolute before:left-3 before:top-3 before:bottom-3 before:w-0.5 before:bg-slate-200 dark:before:bg-slate-800"
+            >
+              <!-- 1. Religious Volunteering -->
+              <article class="relative pl-8 break-inside-avoid">
+                <span
+                  class="absolute left-1.5 top-1.5 w-3.5 h-3.5 rounded-full bg-m3-primary ring-4 ring-white dark:ring-slate-900"
+                ></span>
+
+                <div
+                  class="bg-m3-surfaceContainer/50 rounded-2xl p-4 border border-slate-200/70 dark:border-slate-800"
+                >
+                  <div
+                    class="flex flex-wrap items-start justify-between gap-1 mb-1"
+                  >
+                    <h3
+                      class="font-bold text-slate-900 dark:text-white text-base"
+                    >
+                      Voluntariado Religioso • Gestión IT & Compras
+                    </h3>
+                    <span
+                      class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-100 dark:bg-amber-950 text-amber-900 dark:text-amber-200 border border-amber-300 dark:border-amber-800"
+                    >
+                      Voluntariado No Remunerado
+                    </span>
+                  </div>
+
+                  <div
+                    class="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2"
+                  >
+                    Sept 2024 – Ago 2026
+                  </div>
+
+                  <ul
+                    class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed"
+                  >
+                    <li>
+                      Contacto con proveedores para la adquisición de artículos
+                      y alquiler de maquinaria.
+                    </li>
+                    <li>
+                      Gestión básica de permisos informáticos y accesos dentro
+                      de la organización.
+                    </li>
+                  </ul>
+                </div>
+              </article>
+
+              <!-- 2. NTT DATA -->
+              <article class="relative pl-8 break-inside-avoid">
+                <span
+                  class="absolute left-1.5 top-1.5 w-3.5 h-3.5 rounded-full bg-slate-400 ring-4 ring-white dark:ring-slate-900"
+                ></span>
+
+                <div
+                  class="bg-m3-surfaceContainer/50 rounded-2xl p-4 border border-slate-200/70 dark:border-slate-800"
+                >
+                  <div
+                    class="flex flex-wrap items-start justify-between gap-1 mb-1"
+                  >
+                    <h3
+                      class="font-bold text-slate-900 dark:text-white text-base"
+                    >
+                      Desarrollador Frontend • React
+                    </h3>
+                    <span
+                      class="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 px-2 py-0.5 rounded-md border border-slate-200 dark:border-slate-700"
+                    >
+                      Abr 2024 – Jul 2024
+                    </span>
+                  </div>
+
+                  <div class="text-xs font-bold text-m3-primary mb-2">
+                    NTT DATA
+                  </div>
+
+                  <ul
+                    class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
+                  >
+                    <li>
+                      Desarrollo de componentes modulares utilizando
+                      <strong>React</strong>, <strong>TypeScript</strong> y
+                      <strong>Storybook</strong>.
+                    </li>
+                    <li>
+                      Migración y actualización de librerías de interfaz,
+                      resolviendo conflictos de dependencias.
+                    </li>
+                    <li>
+                      Colaboración multidisciplinar con equipos de diseño y QA
+                      bajo metodologías ágiles.
+                    </li>
+                  </ul>
+
+                  <div class="flex flex-wrap gap-1.5 pt-1">
+                    <span
+                      class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
+                      >React</span
+                    >
+                    <span
+                      class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
+                      >TypeScript</span
+                    >
+                    <span
+                      class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
+                      >Storybook</span
+                    >
+                  </div>
+                </div>
+              </article>
+
+              <!-- 3. Looplan SL -->
+              <article class="relative pl-8 break-inside-avoid">
+                <span
+                  class="absolute left-1.5 top-1.5 w-3.5 h-3.5 rounded-full bg-slate-400 ring-4 ring-white dark:ring-slate-900"
+                ></span>
+
+                <div
+                  class="bg-m3-surfaceContainer/50 rounded-2xl p-4 border border-slate-200/70 dark:border-slate-800"
+                >
+                  <div
+                    class="flex flex-wrap items-start justify-between gap-1 mb-1"
+                  >
+                    <h3
+                      class="font-bold text-slate-900 dark:text-white text-base"
+                    >
+                      Desarrollador Mobile • React Native
+                    </h3>
+                    <span
+                      class="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 px-2 py-0.5 rounded-md border border-slate-200 dark:border-slate-700"
+                    >
+                      Sept 2023 – Mar 2024
+                    </span>
+                  </div>
+
+                  <div class="text-xs font-bold text-m3-primary mb-2">
+                    Looplan SL
+                  </div>
+
+                  <ul
+                    class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
+                  >
+                    <li>
+                      Creación de aplicaciones móviles con
+                      <strong>React Native</strong> y
+                      <strong>TypeScript</strong>.
+                    </li>
+                    <li>
+                      Implementación de animaciones avanzadas, gestos fluidos y
+                      conexión a <strong>Firebase</strong>.
+                    </li>
+                  </ul>
+
+                  <div class="flex flex-wrap gap-1.5 pt-1">
+                    <span
+                      class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
+                      >React Native</span
+                    >
+                    <span
+                      class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
+                      >Firebase</span
+                    >
+                  </div>
+                </div>
+              </article>
+
+              <!-- 4. GreenPowerMonitor -->
+              <article class="relative pl-8 break-inside-avoid">
+                <span
+                  class="absolute left-1.5 top-1.5 w-3.5 h-3.5 rounded-full bg-slate-400 ring-4 ring-white dark:ring-slate-900"
+                ></span>
+
+                <div
+                  class="bg-m3-surfaceContainer/50 rounded-2xl p-4 border border-slate-200/70 dark:border-slate-800"
+                >
+                  <div
+                    class="flex flex-wrap items-start justify-between gap-1 mb-1"
+                  >
+                    <h3
+                      class="font-bold text-slate-900 dark:text-white text-base"
+                    >
+                      Desarrollador Web • React & Angular
+                    </h3>
+                    <span
+                      class="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 px-2 py-0.5 rounded-md border border-slate-200 dark:border-slate-700"
+                    >
+                      Abr 2022 – Jul 2023
+                    </span>
+                  </div>
+
+                  <div class="text-xs font-bold text-m3-primary mb-2">
+                    GreenPowerMonitor (DNV)
+                  </div>
+
+                  <ul
+                    class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
+                  >
+                    <li>
+                      Desarrollo de interfaces de usuario para monitorización
+                      energética en tiempo real.
+                    </li>
+                    <li>
+                      Visualización de gráficos complejos y consumo de APIs con
+                      <strong>GraphQL</strong>.
+                    </li>
+                  </ul>
+
+                  <div class="flex flex-wrap gap-1.5 pt-1">
+                    <span
+                      class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
+                      >React</span
+                    >
+                    <span
+                      class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
+                      >Angular</span
+                    >
+                    <span
+                      class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
+                      >GraphQL</span
+                    >
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: EDUCATION & SKILLS (5 Cols) -->
+          <div class="lg:col-span-5 space-y-6">
+            <!-- ACADEMIC EDUCATION -->
+            <div class="space-y-4 break-inside-avoid">
+              <div
+                class="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2.5"
+              >
+                <span
+                  class="w-8 h-8 rounded-xl bg-m3-secondaryContainer text-m3-onSecondaryContainer flex items-center justify-center"
+                >
+                  <span class="material-symbols-outlined text-[20px]"
+                    >school</span
+                  >
+                </span>
+                <h2
+                  class="text-xl font-bold text-slate-900 dark:text-white tracking-tight font-display"
+                >
+                  Formación Académica
+                </h2>
+              </div>
+
+              <div
+                class="bg-m3-surfaceContainer/50 rounded-2xl p-4 border border-slate-200/70 dark:border-slate-800"
+              >
+                <h3
+                  class="font-bold text-slate-900 dark:text-white text-sm leading-tight mb-0.5"
+                >
+                  Grado Superior en DAW
+                </h3>
+                <div class="text-xs font-semibold text-m3-primary mb-1">
+                  CIFP Carlos III, Cartagena
+                </div>
+                <div
+                  class="text-[11px] text-slate-500 dark:text-slate-400 mb-2"
+                >
+                  2020 – 2022
+                </div>
+
+                <div class="space-y-1.5 text-xs">
+                  <div
+                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-50 dark:bg-amber-950/60 border border-amber-200 dark:border-amber-900 text-amber-900 dark:text-amber-200 font-bold text-[11px] w-full"
+                  >
+                    <span
+                      class="material-symbols-outlined text-[16px] text-amber-600"
+                      >workspace_premium</span
+                    >
+                    <span>Matrícula de Honor (Nota media: 9.0)</span>
+                  </div>
+                  <div
+                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-900 text-blue-900 dark:text-blue-200 font-medium text-[11px] w-full"
+                  >
+                    <span
+                      class="material-symbols-outlined text-[16px] text-blue-600"
+                      >emoji_events</span
+                    >
+                    <span>2º Puesto Competición JuezLTI (EU Code Week)</span>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-m3-surfaceContainer/50 rounded-2xl p-4 border border-slate-200/70 dark:border-slate-800"
+              >
+                <h3
+                  class="font-bold text-slate-900 dark:text-white text-sm leading-tight mb-1"
+                >
+                  Certificación en Desarrollo Móvil
+                </h3>
+                <div class="text-xs font-semibold text-m3-primary mb-1">
+                  Udemy • React Native
+                </div>
+                <div class="text-[11px] text-slate-500 dark:text-slate-400">
+                  Agosto 2023
+                </div>
+              </div>
+
+              <div
+                class="bg-m3-surfaceContainer/50 rounded-2xl p-4 border border-slate-200/70 dark:border-slate-800"
+              >
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h3
+                      class="font-bold text-slate-900 dark:text-white text-sm"
+                    >
+                      First Certificate in English (FCE)
+                    </h3>
+                    <div class="text-xs text-slate-500 dark:text-slate-400">
+                      Cambridge
+                    </div>
+                  </div>
+                  <span
+                    class="px-3 py-1 rounded-full text-xs font-extrabold bg-m3-primary text-white"
+                  >
+                    Nivel B2
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- BLANK SKILLS (Ready to fill in the HTML) -->
+            <div class="space-y-4 break-inside-avoid">
+              <div
+                class="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2.5"
+              >
+                <span
+                  class="w-8 h-8 rounded-xl bg-m3-primaryContainer text-m3-onPrimaryContainer flex items-center justify-center"
+                >
+                  <span class="material-symbols-outlined text-[20px]"
+                    >stars</span
+                  >
+                </span>
+                <h2
+                  class="text-xl font-bold text-slate-900 dark:text-white tracking-tight font-display"
+                >
+                  Aptitudes & Competencias
+                </h2>
+              </div>
+
+              <!-- Blank skills block to fill in the HTML code -->
+              <div
+                class="bg-white dark:bg-slate-900 rounded-2xl p-4 border border-slate-200 dark:border-slate-800 space-y-4"
+              >
+                <!-- 1. Technical Competencies -->
+                <div>
+                  <h4
+                    class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-1.5"
+                  >
+                    <span
+                      class="material-symbols-outlined text-m3-primary text-[16px]"
+                      >code</span
+                    >
+                    <span>Competencias Técnicas</span>
+                  </h4>
+
+                  <!-- FILL IN YOUR TECHNICAL SKILLS HERE IN THE HTML -->
+                  <div class="flex flex-wrap gap-2">
+                    <span
+                      class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-700 dark:text-slate-200"
+                    >
+                      <!-- Write your skill here -->
+                    </span>
+                    <span
+                      class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-700 dark:text-slate-200"
+                    >
+                      <!-- Write your skill here -->
+                    </span>
+                  </div>
+                </div>
+
+                <!-- 2. Professional Skills -->
+                <div>
+                  <h4
+                    class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-1.5"
+                  >
+                    <span
+                      class="material-symbols-outlined text-m3-primary text-[16px]"
+                      >psychology</span
+                    >
+                    <span>Habilidades Profesionales</span>
+                  </h4>
+
+                  <!-- FILL IN YOUR SKILLS HERE IN THE HTML -->
+                  <ul
+                    class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside"
+                  >
+                    <li><!-- Escribe tu habilidad aquí --></li>
+                    <li><!-- Escribe tu habilidad aquí --></li>
+                  </ul>
+                </div>
+
+                <!-- 3. Tools & Environments -->
+                <div>
+                  <h4
+                    class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-1.5"
+                  >
+                    <span
+                      class="material-symbols-outlined text-m3-primary text-[16px]"
+                      >build</span
+                    >
+                    <span>Herramientas & Entornos</span>
+                  </h4>
+
+                  <!-- FILL IN YOUR TOOLS HERE IN THE HTML -->
+                  <div class="flex flex-wrap gap-2">
+                    <span
+                      class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-700 dark:text-slate-200"
+                    >
+                      <!-- Tool 1 -->
+                    </span>
+                    <span
+                      class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-700 dark:text-slate-200"
+                    >
+                      <!-- Tool 2 -->
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer
+          class="mt-8 pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4 text-[11px] text-slate-500 dark:text-slate-400"
+        >
+          <div>
+            <span>Cartagena (Murcia), España</span> •
+            <span>Junior Developer en Búsqueda Activa</span>
+          </div>
+          <div class="font-medium">Última actualización: 2026</div>
+        </footer>
+      </div>
+    </main>
+
+    <script>
+      // Copy to clipboard helper
+      function copyToClipboard(text, message) {
+        if (
+          document.queryCommandSupported &&
+          document.queryCommandSupported("copy")
+        ) {
+          const textarea = document.createElement("textarea");
+          textarea.value = text;
+          textarea.style.position = "fixed";
+          textarea.style.opacity = "0";
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textarea);
+          showToast(message);
+        } else {
+          showToast(text);
+        }
+      }
+
+      // Toast notification
+      function showToast(msg) {
+        const toast = document.getElementById("toast");
+        const toastMsg = document.getElementById("toast-message");
+        toastMsg.innerText = msg;
+        toast.classList.remove("translate-y-20", "opacity-0");
+        toast.classList.add("translate-y-0", "opacity-100");
+
+        setTimeout(() => {
+          toast.classList.remove("translate-y-0", "opacity-100");
+          toast.classList.add("translate-y-20", "opacity-0");
+        }, 2500);
+      }
+
+      // Light / Dark Mode Toggle
+      function toggleDarkMode() {
+        const isDark = document.documentElement.classList.toggle("dark");
+        const themeIcon = document.getElementById("theme-icon");
+        const themeText = document.getElementById("theme-text");
+
+        if (isDark) {
+          themeIcon.innerText = "light_mode";
+          if (themeText) themeText.innerText = "Modo Claro";
+          showToast("Modo Oscuro activado");
+        } else {
+          themeIcon.innerText = "dark_mode";
+          if (themeText) themeText.innerText = "Modo Oscuro";
+          showToast("Modo Claro activado");
+        }
+      }
+
+      // Color Theme Selector (4 distinct accents)
+      function setColorTheme(themeName) {
+        const htmlEl = document.documentElement;
+        if (themeName === "ocean") {
+          htmlEl.removeAttribute("data-theme");
+          showToast("Tono Azul Océano activado");
+        } else {
+          htmlEl.setAttribute("data-theme", themeName);
+          if (themeName === "emerald") showToast("Tono Esmeralda activado");
+          if (themeName === "indigo") showToast("Tono Índigo activado");
+          if (themeName === "amber") showToast("Tono Ámbar activado");
+        }
+      }
+    </script>
+  </body>
 </html>
