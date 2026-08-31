@@ -132,9 +132,10 @@
 .retro-mode {
   font-family: "Silkscreen", cursive, monospace !important;
   image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
-.retro-mode * {
+.retro-mode *:not(.material-symbols-outlined) {
   font-family: "Silkscreen", cursive, monospace !important;
   border-radius: 0px !important;
 }
@@ -180,16 +181,42 @@
   box-shadow: 2px 2px 0px #ffffff !important;
 }
 
-/* Ajuste de iconos Material en modo retro */
-.retro-mode .material-symbols-outlined {
-  font-size: 18px !important;
-  letter-spacing: -2px;
+/* ==========================================
+   3. INTERCAMBIO DE ICONOS MODERNOS VS RETRO
+   ========================================== */
+
+/* Por defecto (Modo Moderno): Ocultar elementos retro */
+.icon-retro {
+  display: none !important;
+}
+
+/* Modo Retro Activo: Ocultar modernos y mostrar retro */
+.retro-mode .icon-modern {
+  display: none !important;
+}
+
+.retro-mode .icon-retro {
+  display: inline-block !important;
+  vertical-align: middle;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Estilo para los SVG retro dibujados en pixel art */
+.pixel-svg {
+  shape-rendering: crispEdges;
+  width: 1.1em;
+  height: 1.1em;
+  fill: currentColor;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /* ==========================================
-   3. ICONOS Y ADAPTACIONES PARA IMPRESIÓN / MÓVIL
+   4. MATERIAL SYMBOLS & RESPONSIVE
    ========================================== */
 .material-symbols-outlined {
+  font-family: "Material Symbols Outlined" !important;
   font-variation-settings:
     "FILL" 0,
     "wght" 400,
@@ -198,7 +225,6 @@
   vertical-align: middle;
 }
 
-/* Impresión optimizada A4 */
 @media print {
   @page {
     size: A4 portrait;
@@ -235,7 +261,6 @@
   display: none;
 }
 
-/* Adaptación responsive móvil */
 @media (max-width: 640px) {
   header {
     top: 0.5rem;
