@@ -78,31 +78,56 @@
 
         <!-- Actions & Customization Controls -->
         <div class="flex items-center flex-wrap gap-2 text-xs">
+          <!-- Language Selector Switcher -->
+          <div
+            class="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-full border border-slate-200 dark:border-slate-700"
+          >
+            <button
+              id="btn-lang-es"
+              onclick="setLanguage('es')"
+              class="px-2.5 py-1 rounded-full font-bold text-xs transition-all duration-200 bg-m3-primary text-white shadow-xs flex items-center gap-1"
+            >
+              <span>🇪🇸</span> <span>ES</span>
+            </button>
+            <button
+              id="btn-lang-en"
+              onclick="setLanguage('en')"
+              class="px-2.5 py-1 rounded-full font-bold text-xs transition-all duration-200 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center gap-1"
+            >
+              <span>🇬🇧</span> <span>EN</span>
+            </button>
+          </div>
+
           <!-- 4 Color Tone Selectors -->
           <div
             class="mobile-floating-colors flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 p-1.5 rounded-full border border-slate-200 dark:border-slate-700"
           >
             <span
               class="text-[10px] font-bold text-slate-500 dark:text-slate-400 px-1 hidden sm:inline"
+              id="lbl-color-theme"
               >Color:</span
             >
             <button
               onclick="setColorTheme('emerald')"
+              id="btn-color-emerald"
               title="Tono Esmeralda"
               class="w-5 h-5 rounded-full bg-[#006c4c] ring-2 ring-white dark:ring-slate-900 hover:scale-110 transition shadow-xs"
             ></button>
             <button
               onclick="setColorTheme('ocean')"
+              id="btn-color-ocean"
               title="Tono Azul Océano"
               class="w-5 h-5 rounded-full bg-[#006399] ring-2 ring-white dark:ring-slate-900 hover:scale-110 transition shadow-xs"
             ></button>
             <button
               onclick="setColorTheme('indigo')"
+              id="btn-color-indigo"
               title="Tono Índigo"
               class="w-5 h-5 rounded-full bg-[#5256a9] ring-2 ring-white dark:ring-slate-900 hover:scale-110 transition shadow-xs"
             ></button>
             <button
               onclick="setColorTheme('amber')"
+              id="btn-color-amber"
               title="Tono Ámbar / Terracota"
               class="w-5 h-5 rounded-full bg-[#984800] ring-2 ring-white dark:ring-slate-900 hover:scale-110 transition shadow-xs"
             ></button>
@@ -111,6 +136,7 @@
           <!-- Light / Dark Mode Toggle -->
           <button
             onclick="toggleDarkMode()"
+            id="btn-dark-mode"
             title="Cambiar entre modo claro y oscuro"
             class="mobile-floating-theme inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition"
           >
@@ -126,7 +152,7 @@
             class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-m3-primary text-white font-bold hover:brightness-110 shadow-sm transition"
           >
             <span class="material-symbols-outlined text-[17px]">print</span>
-            <span>Imprimir / PDF</span>
+            <span id="btn-print-text">Imprimir / PDF</span>
           </button>
         </div>
       </div>
@@ -138,7 +164,15 @@
       aria-label="Controles rápidos"
     >
       <button
+        onclick="toggleLanguage()"
+        title="Cambiar idioma (ES/EN)"
+        class="inline-flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-lg w-10 h-10 font-bold text-xs border border-slate-200 dark:border-slate-700"
+      >
+        <span id="mobile-lang-icon">🇬🇧</span>
+      </button>
+      <button
         onclick="toggleDarkMode()"
+        id="btn-dark-mode-mobile"
         title="Cambiar entre modo claro y oscuro"
         class="mobile-floating-theme inline-flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-lg"
       >
@@ -152,24 +186,28 @@
       >
         <button
           onclick="setColorTheme('emerald')"
+          id="btn-color-emerald-m"
           title="Tono Esmeralda"
           aria-label="Tono Esmeralda"
           class="w-5 h-5 rounded-full bg-[#006c4c] ring-2 ring-white dark:ring-slate-900 hover:scale-110 transition shadow-xs"
         ></button>
         <button
           onclick="setColorTheme('ocean')"
+          id="btn-color-ocean-m"
           title="Tono Azul Océano"
           aria-label="Tono Azul Océano"
           class="w-5 h-5 rounded-full bg-[#006399] ring-2 ring-white dark:ring-slate-900 hover:scale-110 transition shadow-xs"
         ></button>
         <button
           onclick="setColorTheme('indigo')"
+          id="btn-color-indigo-m"
           title="Tono Índigo"
           aria-label="Tono Índigo"
           class="w-5 h-5 rounded-full bg-[#5256a9] ring-2 ring-white dark:ring-slate-900 hover:scale-110 transition shadow-xs"
         ></button>
         <button
           onclick="setColorTheme('amber')"
+          id="btn-color-amber-m"
           title="Tono Ámbar / Terracota"
           aria-label="Tono Ámbar / Terracota"
           class="w-5 h-5 rounded-full bg-[#984800] ring-2 ring-white dark:ring-slate-900 hover:scale-110 transition shadow-xs"
@@ -201,12 +239,11 @@
           <div
             class="relative flex flex-col md:flex-row items-center md:items-start gap-6"
           >
-            <!-- Photo Placeholder (Standard <img> tag with clean fallback) -->
+            <!-- Photo Placeholder -->
             <div class="relative flex-shrink-0">
               <div
                 class="w-32 h-32 sm:w-36 sm:h-36 rounded-3xl overflow-hidden border-4 border-white dark:border-slate-800 shadow-md bg-slate-200 dark:bg-slate-800 flex items-center justify-center"
               >
-                <!-- REPLACE THE SRC WITH YOUR PHOTO PATH (Ex: src="my-photo.jpg") -->
                 <img
                   src="./profile_photo.jpeg"
                   alt="Foto de Rubén Fernández Sánchez"
@@ -234,7 +271,10 @@
                   <span
                     class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"
                   ></span>
-                  <span>Búsqueda Activa de Empleo</span>
+                  <span class="lang-es">Búsqueda Activa de Empleo</span>
+                  <span class="lang-en hidden"
+                    >Actively Seeking Employment</span
+                  >
                 </span>
               </div>
 
@@ -244,20 +284,38 @@
                 Rubén Fernández Sánchez
               </h1>
 
-              <p
-                class="text-sm font-medium text-slate-600 dark:text-slate-300 mb-4 max-w-2xl leading-relaxed"
-              >
-                <strong>Junior Developer</strong> entusiasmado por la ingeniería
-                de software y con una fuerte motivación por seguir aprendiendo y
-                perfeccionarme de forma continua. Cuento con capacidad versátil
-                para trabajar en
-                <strong>frontend, backend, APIs y microservicios</strong>
-                (proyectos disponibles en mi GitHub), además de ser
-                <strong
-                  >experto en el uso e integración de Inteligencia Artificial
-                  (IA) en cualquier caso de uso</strong
-                >.
-              </p>
+              <div class="lang-es">
+                <p
+                  class="text-sm font-medium text-slate-600 dark:text-slate-300 mb-4 max-w-2xl leading-relaxed"
+                >
+                  <strong>Junior Developer</strong> entusiasmado por la
+                  ingeniería de software y con una fuerte motivación por seguir
+                  aprendiendo y perfeccionarme de forma continua. Cuento con
+                  capacidad versátil para trabajar en
+                  <strong>frontend, backend, APIs y microservicios</strong>
+                  (proyectos disponibles en mi GitHub), además de ser
+                  <strong
+                    >experto en el uso e integración de Inteligencia Artificial
+                    (IA) en cualquier caso de uso</strong
+                  >.
+                </p>
+              </div>
+
+              <div class="lang-en hidden">
+                <p
+                  class="text-sm font-medium text-slate-600 dark:text-slate-300 mb-4 max-w-2xl leading-relaxed"
+                >
+                  Enthusiastic <strong>Junior Developer</strong> with a strong
+                  passion for software engineering and continuous learning.
+                  Possess a versatile skill set across
+                  <strong>frontend, backend, APIs, and microservices</strong>
+                  (projects available on GitHub), alongside expertise in
+                  <strong
+                    >integrating Artificial Intelligence (AI) solutions into
+                    diverse use cases</strong
+                  >.
+                </p>
+              </div>
 
               <!-- Contact & Social Links -->
               <div
@@ -270,11 +328,19 @@
                     class="material-symbols-outlined text-m3-primary text-[17px]"
                     >location_on</span
                   >
-                  <span>Cartagena (Murcia), España</span>
+                  <span class="lang-es">Cartagena (Murcia), España</span>
+                  <span class="lang-en hidden">Cartagena (Murcia), Spain</span>
                 </div>
 
                 <button
-                  onclick="copyToClipboard('+34644865406', 'Teléfono copiado')"
+                  onclick="
+                    copyToClipboard(
+                      '+34644865406',
+                      currentLang === 'es'
+                        ? 'Teléfono copiado'
+                        : 'Phone copied to clipboard',
+                    )
+                  "
                   class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium hover:border-m3-primary transition shadow-xs group"
                 >
                   <span
@@ -290,7 +356,12 @@
 
                 <button
                   onclick="
-                    copyToClipboard('fs.ruben02@gmail.com', 'Email copiado')
+                    copyToClipboard(
+                      'fs.ruben02@gmail.com',
+                      currentLang === 'es'
+                        ? 'Email copiado'
+                        : 'Email copied to clipboard',
+                    )
                   "
                   class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium hover:border-m3-primary transition shadow-xs group"
                 >
@@ -339,7 +410,8 @@
               <h2
                 class="text-xl font-bold text-slate-900 dark:text-white tracking-tight font-display"
               >
-                Experiencia Profesional
+                <span class="lang-es">Experiencia Profesional</span>
+                <span class="lang-en hidden">Professional Experience</span>
               </h2>
             </div>
 
@@ -361,23 +433,30 @@
                     <h3
                       class="font-bold text-slate-900 dark:text-white text-base"
                     >
-                      Voluntariado Religioso • Gestión IT & Compras
+                      <span class="lang-es"
+                        >Voluntariado Religioso • Gestión IT & Compras</span
+                      >
+                      <span class="lang-en hidden"
+                        >Religious Volunteer • IT & Purchasing Management</span
+                      >
                     </h3>
                     <span
                       class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-100 dark:bg-amber-950 text-amber-900 dark:text-amber-200 border border-amber-300 dark:border-amber-800"
                     >
-                      Voluntariado No Remunerado
+                      <span class="lang-es">Voluntariado No Remunerado</span>
+                      <span class="lang-en hidden">Unpaid Volunteer Work</span>
                     </span>
                   </div>
 
                   <div
                     class="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2"
                   >
-                    Sept 2024 – Ago 2026
+                    <span class="lang-es">Sept 2024 – Ago 2026</span>
+                    <span class="lang-en hidden">Sep 2024 – Aug 2026</span>
                   </div>
 
                   <ul
-                    class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed"
+                    class="lang-es text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed"
                   >
                     <li>
                       Contacto con proveedores para la adquisición de artículos
@@ -386,6 +465,18 @@
                     <li>
                       Gestión básica de permisos informáticos y accesos dentro
                       de la organización.
+                    </li>
+                  </ul>
+                  <ul
+                    class="lang-en hidden text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed"
+                  >
+                    <li>
+                      Communication with vendors and suppliers for item
+                      procurement and machinery rentals.
+                    </li>
+                    <li>
+                      Basic management of user IT permissions and internal
+                      organizational access control.
                     </li>
                   </ul>
                 </div>
@@ -406,12 +497,18 @@
                     <h3
                       class="font-bold text-slate-900 dark:text-white text-base"
                     >
-                      Desarrollador Frontend • React
+                      <span class="lang-es"
+                        >Desarrollador Frontend • React</span
+                      >
+                      <span class="lang-en hidden"
+                        >Frontend Developer • React</span
+                      >
                     </h3>
                     <span
                       class="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 px-2 py-0.5 rounded-md border border-slate-200 dark:border-slate-700"
                     >
-                      Abr 2024 – Jul 2024
+                      <span class="lang-es">Abr 2024 – Jul 2024</span>
+                      <span class="lang-en hidden">Apr 2024 – Jul 2024</span>
                     </span>
                   </div>
 
@@ -420,7 +517,7 @@
                   </div>
 
                   <ul
-                    class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
+                    class="lang-es text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
                   >
                     <li>
                       Desarrollo de componentes modulares utilizando
@@ -434,6 +531,23 @@
                     <li>
                       Colaboración multidisciplinar con equipos de diseño y QA
                       bajo metodologías ágiles.
+                    </li>
+                  </ul>
+                  <ul
+                    class="lang-en hidden text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
+                  >
+                    <li>
+                      Developed modular UI components utilizing
+                      <strong>React</strong>, <strong>TypeScript</strong>, and
+                      <strong>Storybook</strong>.
+                    </li>
+                    <li>
+                      Migrated and updated UI libraries, resolving complex
+                      dependency conflicts.
+                    </li>
+                    <li>
+                      Multidisciplinary collaboration with design and QA teams
+                      under agile methodologies.
                     </li>
                   </ul>
 
@@ -469,12 +583,18 @@
                     <h3
                       class="font-bold text-slate-900 dark:text-white text-base"
                     >
-                      Desarrollador Mobile • React Native
+                      <span class="lang-es"
+                        >Desarrollador Mobile • React Native</span
+                      >
+                      <span class="lang-en hidden"
+                        >Mobile Developer • React Native</span
+                      >
                     </h3>
                     <span
                       class="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 px-2 py-0.5 rounded-md border border-slate-200 dark:border-slate-700"
                     >
-                      Sept 2023 – Mar 2024
+                      <span class="lang-es">Sept 2023 – Mar 2024</span>
+                      <span class="lang-en hidden">Sep 2023 – Mar 2024</span>
                     </span>
                   </div>
 
@@ -483,7 +603,7 @@
                   </div>
 
                   <ul
-                    class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
+                    class="lang-es text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
                   >
                     <li>
                       Creación de aplicaciones móviles con
@@ -493,6 +613,20 @@
                     <li>
                       Implementación de animaciones avanzadas, gestos fluidos y
                       conexión a <strong>Firebase</strong>.
+                    </li>
+                  </ul>
+                  <ul
+                    class="lang-en hidden text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
+                  >
+                    <li>
+                      Engineered mobile applications using
+                      <strong>React Native</strong> and
+                      <strong>TypeScript</strong>.
+                    </li>
+                    <li>
+                      Implemented advanced animations, smooth touch gestures,
+                      and <strong>Firebase</strong> backend services
+                      integration.
                     </li>
                   </ul>
 
@@ -524,12 +658,18 @@
                     <h3
                       class="font-bold text-slate-900 dark:text-white text-base"
                     >
-                      Desarrollador Web • React & Angular
+                      <span class="lang-es"
+                        >Desarrollador Web • React & Angular</span
+                      >
+                      <span class="lang-en hidden"
+                        >Web Developer • React & Angular</span
+                      >
                     </h3>
                     <span
                       class="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 px-2 py-0.5 rounded-md border border-slate-200 dark:border-slate-700"
                     >
-                      Abr 2022 – Jul 2023
+                      <span class="lang-es">Abr 2022 – Jul 2023</span>
+                      <span class="lang-en hidden">Apr 2022 – Jul 2023</span>
                     </span>
                   </div>
 
@@ -538,7 +678,7 @@
                   </div>
 
                   <ul
-                    class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
+                    class="lang-es text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
                   >
                     <li>
                       Desarrollo de interfaces de usuario para monitorización
@@ -547,6 +687,18 @@
                     <li>
                       Visualización de gráficos complejos y consumo de APIs con
                       <strong>GraphQL</strong>.
+                    </li>
+                  </ul>
+                  <ul
+                    class="lang-en hidden text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
+                  >
+                    <li>
+                      Built user interfaces for real-time energy monitoring
+                      platforms.
+                    </li>
+                    <li>
+                      Visualized complex data charts and consumed backend
+                      services via <strong>GraphQL</strong>.
                     </li>
                   </ul>
 
@@ -586,7 +738,8 @@
                 <h2
                   class="text-xl font-bold text-slate-900 dark:text-white tracking-tight font-display"
                 >
-                  Formación Académica
+                  <span class="lang-es">Formación Académica</span>
+                  <span class="lang-en hidden">Education & Qualifications</span>
                 </h2>
               </div>
 
@@ -596,7 +749,10 @@
                 <h3
                   class="font-bold text-slate-900 dark:text-white text-sm leading-tight mb-0.5"
                 >
-                  Grado Superior en DAW
+                  <span class="lang-es">Grado Superior en DAW</span>
+                  <span class="lang-en hidden"
+                    >Higher Degree in Web Application Development (DAW)</span
+                  >
                 </h3>
                 <div class="text-xs font-semibold text-m3-primary mb-1">
                   CIFP Carlos III, Cartagena
@@ -615,7 +771,12 @@
                       class="material-symbols-outlined text-[16px] text-amber-600"
                       >workspace_premium</span
                     >
-                    <span>Matrícula de Honor (Nota media: 9.0)</span>
+                    <span class="lang-es"
+                      >Matrícula de Honor (Nota media: 9.0)</span
+                    >
+                    <span class="lang-en hidden"
+                      >Graduated with Honors (GPA: 9.0/10)</span
+                    >
                   </div>
                   <div
                     class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-900 text-blue-900 dark:text-blue-200 font-medium text-[11px] w-full"
@@ -624,7 +785,12 @@
                       class="material-symbols-outlined text-[16px] text-blue-600"
                       >emoji_events</span
                     >
-                    <span>2º Puesto Competición JuezLTI (EU Code Week)</span>
+                    <span class="lang-es"
+                      >2º Puesto Competición JuezLTI (EU Code Week)</span
+                    >
+                    <span class="lang-en hidden"
+                      >2nd Place JuezLTI Competition (EU Code Week)</span
+                    >
                   </div>
                 </div>
               </div>
@@ -635,13 +801,17 @@
                 <h3
                   class="font-bold text-slate-900 dark:text-white text-sm leading-tight mb-1"
                 >
-                  Certificación en Desarrollo Móvil
+                  <span class="lang-es">Certificación en Desarrollo Móvil</span>
+                  <span class="lang-en hidden"
+                    >Mobile Development Certification</span
+                  >
                 </h3>
                 <div class="text-xs font-semibold text-m3-primary mb-1">
                   Udemy • React Native
                 </div>
                 <div class="text-[11px] text-slate-500 dark:text-slate-400">
-                  Agosto 2023
+                  <span class="lang-es">Agosto 2023</span>
+                  <span class="lang-en hidden">August 2023</span>
                 </div>
               </div>
 
@@ -662,13 +832,14 @@
                   <span
                     class="px-3 py-1 rounded-full text-xs font-extrabold bg-m3-primary text-white"
                   >
-                    Nivel B2
+                    <span class="lang-es">Nivel B2</span>
+                    <span class="lang-en hidden">Level B2</span>
                   </span>
                 </div>
               </div>
             </div>
 
-            <!-- BLANK SKILLS (Ready to fill in the HTML) -->
+            <!-- SKILLS -->
             <div class="space-y-4 break-inside-avoid">
               <div
                 class="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2.5"
@@ -683,7 +854,8 @@
                 <h2
                   class="text-xl font-bold text-slate-900 dark:text-white tracking-tight font-display"
                 >
-                  Aptitudes & Competencias
+                  <span class="lang-es">Aptitudes & Competencias</span>
+                  <span class="lang-en hidden">Skills & Competencies</span>
                 </h2>
               </div>
 
@@ -699,10 +871,10 @@
                       class="material-symbols-outlined text-m3-primary text-[16px]"
                       >code</span
                     >
-                    <span>Competencias Técnicas</span>
+                    <span class="lang-es">Competencias Técnicas</span>
+                    <span class="lang-en hidden">Technical Skills</span>
                   </h4>
 
-                  <!-- FILL IN YOUR TECHNICAL SKILLS HERE IN THE HTML -->
                   <div class="flex flex-wrap gap-2">
                     <span
                       class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-700 dark:text-slate-200"
@@ -726,18 +898,27 @@
                       class="material-symbols-outlined text-m3-primary text-[16px]"
                       >psychology</span
                     >
-                    <span>Habilidades Profesionales</span>
+                    <span class="lang-es">Habilidades Profesionales</span>
+                    <span class="lang-en hidden">Soft Skills</span>
                   </h4>
 
-                  <!-- FILL IN YOUR SKILLS HERE IN THE HTML -->
                   <ul
-                    class="text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside"
+                    class="lang-es text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside"
                   >
                     <li>Comunicación con el equipo</li>
                     <li>Proactividad</li>
                     <li>Ganas de entender la empresa y sus objetivos</li>
                     <li>Comprensión del marco completo</li>
                     <li>Humor</li>
+                  </ul>
+                  <ul
+                    class="lang-en hidden text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside"
+                  >
+                    <li>Team Communication</li>
+                    <li>Proactivity</li>
+                    <li>Eagerness to understand business goals</li>
+                    <li>Big-picture understanding</li>
+                    <li>Sense of Humor</li>
                   </ul>
                 </div>
 
@@ -750,10 +931,10 @@
                       class="material-symbols-outlined text-m3-primary text-[16px]"
                       >build</span
                     >
-                    <span>Herramientas & Entornos</span>
+                    <span class="lang-es">Herramientas & Entornos</span>
+                    <span class="lang-en hidden">Tools & Tech Stack</span>
                   </h4>
 
-                  <!-- FILL IN YOUR TOOLS HERE IN THE HTML -->
                   <div class="flex flex-wrap gap-2">
                     <span
                       class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium text-slate-700 dark:text-slate-200"
@@ -792,15 +973,144 @@
           class="mt-8 pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4 text-[11px] text-slate-500 dark:text-slate-400"
         >
           <div>
-            <span>Cartagena (Murcia), España</span> •
-            <span>Junior Developer en Búsqueda Activa</span>
+            <span class="lang-es">Cartagena (Murcia), España</span>
+            <span class="lang-en hidden">Cartagena (Murcia), Spain</span> •
+            <span class="lang-es">Junior Developer en Búsqueda Activa</span>
+            <span class="lang-en hidden"
+              >Junior Developer • Actively Seeking Opportunities</span
+            >
           </div>
-          <div class="font-medium">Última actualización: 2026</div>
+          <div class="font-medium">
+            <span class="lang-es">Última actualización: 2026</span>
+            <span class="lang-en hidden">Last updated: 2026</span>
+          </div>
         </footer>
       </div>
     </main>
 
     <script>
+      let currentLang = "es";
+
+      // Dictionary for dynamic texts & UI notifications
+      const i18n = {
+        es: {
+          toastLang: "Idioma: Español",
+          toastDarkOn: "Modo Oscuro activado",
+          toastDarkOff: "Modo Claro activado",
+          modeDark: "Modo Oscuro",
+          modeLight: "Modo Claro",
+          titleDarkMode: "Cambiar entre modo claro y oscuro",
+          themeLabel: "Color:",
+          printBtn: "Imprimir / PDF",
+          toastEmerald: "Tono Esmeralda activado",
+          toastOcean: "Tono Azul Océano activado",
+          toastIndigo: "Tono Índigo activado",
+          toastAmber: "Tono Ámbar activado",
+          titleEmerald: "Tono Esmeralda",
+          titleOcean: "Tono Azul Océano",
+          titleIndigo: "Tono Índigo",
+          titleAmber: "Tono Ámbar / Terracota",
+        },
+        en: {
+          toastLang: "Language: English",
+          toastDarkOn: "Dark Mode enabled",
+          toastDarkOff: "Light Mode enabled",
+          modeDark: "Dark Mode",
+          modeLight: "Light Mode",
+          titleDarkMode: "Toggle light and dark mode",
+          themeLabel: "Theme:",
+          printBtn: "Print / PDF",
+          toastEmerald: "Emerald theme enabled",
+          toastOcean: "Ocean Blue theme enabled",
+          toastIndigo: "Indigo theme enabled",
+          toastAmber: "Amber theme enabled",
+          titleEmerald: "Emerald Theme",
+          titleOcean: "Ocean Blue Theme",
+          titleIndigo: "Indigo Theme",
+          titleAmber: "Amber / Terracotta Theme",
+        },
+      };
+
+      // Switch language function
+      function setLanguage(lang) {
+        currentLang = lang;
+        const htmlEl = document.documentElement;
+        htmlEl.setAttribute("lang", lang);
+
+        const esElements = document.querySelectorAll(".lang-es");
+        const enElements = document.querySelectorAll(".lang-en");
+        const btnEs = document.getElementById("btn-lang-es");
+        const btnEn = document.getElementById("btn-lang-en");
+        const mobileLangIcon = document.getElementById("mobile-lang-icon");
+        const colorLabel = document.getElementById("lbl-color-theme");
+        const printText = document.getElementById("btn-print-text");
+        const themeText = document.getElementById("theme-text");
+        const isDark = htmlEl.classList.contains("dark");
+
+        if (lang === "es") {
+          esElements.forEach((el) => el.classList.remove("hidden"));
+          enElements.forEach((el) => el.classList.add("hidden"));
+
+          btnEs.className =
+            "px-2.5 py-1 rounded-full font-bold text-xs transition-all duration-200 bg-m3-primary text-white shadow-xs flex items-center gap-1";
+          btnEn.className =
+            "px-2.5 py-1 rounded-full font-bold text-xs transition-all duration-200 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center gap-1";
+
+          if (mobileLangIcon) mobileLangIcon.innerText = "🇬🇧";
+        } else {
+          esElements.forEach((el) => el.classList.add("hidden"));
+          enElements.forEach((el) => el.classList.remove("hidden"));
+
+          btnEn.className =
+            "px-2.5 py-1 rounded-full font-bold text-xs transition-all duration-200 bg-m3-primary text-white shadow-xs flex items-center gap-1";
+          btnEs.className =
+            "px-2.5 py-1 rounded-full font-bold text-xs transition-all duration-200 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center gap-1";
+
+          if (mobileLangIcon) mobileLangIcon.innerText = "🇪🇸";
+        }
+
+        // Update UI dynamic text elements
+        if (colorLabel) colorLabel.innerText = i18n[lang].themeLabel;
+        if (printText) printText.innerText = i18n[lang].printBtn;
+        if (themeText)
+          themeText.innerText = isDark
+            ? i18n[lang].modeLight
+            : i18n[lang].modeDark;
+
+        // Update titles for buttons
+        const darkModeBtn = document.getElementById("btn-dark-mode");
+        const darkModeBtnMobile = document.getElementById(
+          "btn-dark-mode-mobile",
+        );
+        if (darkModeBtn) darkModeBtn.title = i18n[lang].titleDarkMode;
+        if (darkModeBtnMobile)
+          darkModeBtnMobile.title = i18n[lang].titleDarkMode;
+
+        const setBtnTitle = (id, titleText) => {
+          const el = document.getElementById(id);
+          if (el) {
+            el.title = titleText;
+            if (el.hasAttribute("aria-label"))
+              el.setAttribute("aria-label", titleText);
+          }
+        };
+
+        setBtnTitle("btn-color-emerald", i18n[lang].titleEmerald);
+        setBtnTitle("btn-color-ocean", i18n[lang].titleOcean);
+        setBtnTitle("btn-color-indigo", i18n[lang].titleIndigo);
+        setBtnTitle("btn-color-amber", i18n[lang].titleAmber);
+        setBtnTitle("btn-color-emerald-m", i18n[lang].titleEmerald);
+        setBtnTitle("btn-color-ocean-m", i18n[lang].titleOcean);
+        setBtnTitle("btn-color-indigo-m", i18n[lang].titleIndigo);
+        setBtnTitle("btn-color-amber-m", i18n[lang].titleAmber);
+
+        showToast(i18n[lang].toastLang);
+      }
+
+      function toggleLanguage() {
+        setLanguage(currentLang === "es" ? "en" : "es");
+      }
+
       // Copy to clipboard helper
       function copyToClipboard(text, message) {
         if (
@@ -843,12 +1153,12 @@
 
         if (isDark) {
           themeIcon.innerText = "light_mode";
-          if (themeText) themeText.innerText = "Modo Claro";
-          showToast("Modo Oscuro activado");
+          if (themeText) themeText.innerText = i18n[currentLang].modeLight;
+          showToast(i18n[currentLang].toastDarkOn);
         } else {
           themeIcon.innerText = "dark_mode";
-          if (themeText) themeText.innerText = "Modo Oscuro";
-          showToast("Modo Claro activado");
+          if (themeText) themeText.innerText = i18n[currentLang].modeDark;
+          showToast(i18n[currentLang].toastDarkOff);
         }
       }
 
@@ -857,12 +1167,13 @@
         const htmlEl = document.documentElement;
         if (themeName === "ocean") {
           htmlEl.removeAttribute("data-theme");
-          showToast("Tono Azul Océano activado");
+          showToast(i18n[currentLang].toastOcean);
         } else {
           htmlEl.setAttribute("data-theme", themeName);
-          if (themeName === "emerald") showToast("Tono Esmeralda activado");
-          if (themeName === "indigo") showToast("Tono Índigo activado");
-          if (themeName === "amber") showToast("Tono Ámbar activado");
+          if (themeName === "emerald")
+            showToast(i18n[currentLang].toastEmerald);
+          if (themeName === "indigo") showToast(i18n[currentLang].toastIndigo);
+          if (themeName === "amber") showToast(i18n[currentLang].toastAmber);
         }
       }
     </script>
