@@ -1,4 +1,8 @@
-/* 1. OCEAN PALETTE (Default Theme - Light) */
+/* ==========================================
+   1. PALETAS DE COLOR MATERIAL 3 (LIGHT & DARK)
+   ========================================== */
+
+/* OCEAN PALETTE (Default Theme - Light) */
 :root {
   --m3-primary: #006399;
   --m3-on-primary: #ffffff;
@@ -29,7 +33,7 @@
   --m3-outline-variant: #41474d;
 }
 
-/* 2. EMERALD PALETTE (Light & Dark) */
+/* EMERALD PALETTE (Light & Dark) */
 [data-theme="emerald"] {
   --m3-primary: #006c4c;
   --m3-on-primary: #ffffff;
@@ -60,7 +64,7 @@
   --m3-outline-variant: #404943;
 }
 
-/* 3. EXPRESSIVE INDIGO PALETTE (Light & Dark) */
+/* EXPRESSIVE INDIGO PALETTE (Light & Dark) */
 [data-theme="indigo"] {
   --m3-primary: #5256a9;
   --m3-on-primary: #ffffff;
@@ -91,7 +95,7 @@
   --m3-outline-variant: #46454f;
 }
 
-/* 4. WARM AMBER / TERRACOTTA PALETTE (Light & Dark) */
+/* WARM AMBER / TERRACOTTA PALETTE (Light & Dark) */
 [data-theme="amber"] {
   --m3-primary: #984800;
   --m3-on-primary: #ffffff;
@@ -122,6 +126,69 @@
   --m3-outline-variant: #53443d;
 }
 
+/* ==========================================
+   2. REGLAS RETRO DE 8 BITS (PIXEL ART)
+   ========================================== */
+.retro-mode {
+  font-family: "Silkscreen", cursive, monospace !important;
+  image-rendering: pixelated;
+}
+
+.retro-mode * {
+  font-family: "Silkscreen", cursive, monospace !important;
+  border-radius: 0px !important;
+}
+
+/* Bordes y sombras pixeladas para contenedores (Modo Claro) */
+.retro-mode .page-container,
+.retro-mode section,
+.retro-mode article,
+.retro-mode header > div,
+.retro-mode .bg-white,
+.retro-mode .bg-m3-surfaceContainer\/50 {
+  border-style: solid !important;
+  border-width: 4px !important;
+  border-color: #000000 !important;
+  box-shadow:
+    4px 4px 0px #000000,
+    8px 8px 0px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Bordes y sombras pixeladas para contenedores (Modo Oscuro) */
+.retro-mode.dark .page-container,
+.retro-mode.dark section,
+.retro-mode.dark article,
+.retro-mode.dark header > div,
+.retro-mode.dark .bg-slate-900,
+.retro-mode.dark .bg-m3-surfaceContainer\/50 {
+  border-color: #ffffff !important;
+  box-shadow:
+    4px 4px 0px #ffffff,
+    8px 8px 0px rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Botones y enlaces pixelados */
+.retro-mode button,
+.retro-mode a {
+  border-style: solid !important;
+  border-width: 2px !important;
+  box-shadow: 2px 2px 0px #000000 !important;
+}
+
+.retro-mode.dark button,
+.retro-mode.dark a {
+  box-shadow: 2px 2px 0px #ffffff !important;
+}
+
+/* Ajuste de iconos Material en modo retro */
+.retro-mode .material-symbols-outlined {
+  font-size: 18px !important;
+  letter-spacing: -2px;
+}
+
+/* ==========================================
+   3. ICONOS Y ADAPTACIONES PARA IMPRESIÓN / MÓVIL
+   ========================================== */
 .material-symbols-outlined {
   font-variation-settings:
     "FILL" 0,
@@ -131,7 +198,7 @@
   vertical-align: middle;
 }
 
-/* Styles optimized for A4 Printing */
+/* Impresión optimizada A4 */
 @media print {
   @page {
     size: A4 portrait;
@@ -168,6 +235,7 @@
   display: none;
 }
 
+/* Adaptación responsive móvil */
 @media (max-width: 640px) {
   header {
     top: 0.5rem;

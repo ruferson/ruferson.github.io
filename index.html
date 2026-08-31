@@ -8,11 +8,11 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk -->
+    <!-- Google Fonts: Plus Jakarta Sans, Space Grotesk & Silkscreen (8-bit) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=Silkscreen:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -33,6 +33,7 @@
                 "sans-serif",
               ],
               display: ['"Space Grotesk"', "sans-serif"],
+              pixel: ['"Silkscreen"', "cursive", "monospace"],
             },
             colors: {
               m3: {
@@ -78,6 +79,17 @@
 
         <!-- Actions & Customization Controls -->
         <div class="flex items-center flex-wrap gap-2 text-xs">
+          <!-- 8-Bit Retro Mode Toggle Switcher -->
+          <button
+            onclick="toggleRetroMode()"
+            id="btn-retro-mode"
+            title="Activar modo retro de 8 bits"
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-bold hover:bg-slate-300 dark:hover:bg-slate-700 transition"
+          >
+            <span class="text-[14px]">👾</span>
+            <span id="btn-retro-text">8-Bit Mode</span>
+          </button>
+
           <!-- Language Selector Switcher -->
           <div
             class="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-full border border-slate-200 dark:border-slate-700"
@@ -163,6 +175,13 @@
       class="mobile-floating-controls no-print"
       aria-label="Controles rápidos"
     >
+      <button
+        onclick="toggleRetroMode()"
+        title="Modo Retro 8-Bit"
+        class="inline-flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-lg w-10 h-10 font-bold text-xs border border-slate-200 dark:border-slate-700"
+      >
+        <span>👾</span>
+      </button>
       <button
         onclick="toggleLanguage()"
         title="Cambiar idioma (ES/EN)"
@@ -990,6 +1009,7 @@
 
     <script>
       let currentLang = "es";
+      let isRetroMode = false;
 
       // Dictionary for dynamic texts & UI notifications
       const i18n = {
@@ -1010,6 +1030,8 @@
           titleOcean: "Tono Azul Océano",
           titleIndigo: "Tono Índigo",
           titleAmber: "Tono Ámbar / Terracota",
+          toastRetroOn: "¡Modo Retro 8-Bits activado!",
+          toastRetroOff: "Modo Moderno activado",
         },
         en: {
           toastLang: "Language: English",
@@ -1028,8 +1050,27 @@
           titleOcean: "Ocean Blue Theme",
           titleIndigo: "Indigo Theme",
           titleAmber: "Amber / Terracotta Theme",
+          toastRetroOn: "8-Bit Retro Mode activated!",
+          toastRetroOff: "Modern UI Mode restored",
         },
       };
+
+      // Toggle 8-Bit Retro Mode
+      function toggleRetroMode() {
+        isRetroMode = !isRetroMode;
+        const bodyEl = document.body;
+        const retroBtn = document.getElementById("btn-retro-mode");
+
+        if (isRetroMode) {
+          bodyEl.classList.add("retro-mode");
+          if (retroBtn) retroBtn.classList.add("ring-4", "ring-emerald-400");
+          showToast(i18n[currentLang].toastRetroOn);
+        } else {
+          bodyEl.classList.remove("retro-mode");
+          if (retroBtn) retroBtn.classList.remove("ring-4", "ring-emerald-400");
+          showToast(i18n[currentLang].toastRetroOff);
+        }
+      }
 
       // Switch language function
       function setLanguage(lang) {
