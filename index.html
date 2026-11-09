@@ -62,7 +62,10 @@
     class="bg-slate-100 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased min-h-screen transition-colors duration-300"
   >
     <!-- Floating Control Bar -->
-    <header class="no-print sticky top-3 z-50 max-w-5xl mx-auto px-4">
+    <header
+      class="no-print sticky top-3 z-50 max-w-5xl mx-auto px-4"
+      aria-label="Barra de controles principal"
+    >
       <div
         class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border border-slate-200/90 dark:border-slate-800 shadow-lg rounded-full px-4 py-2.5 flex flex-wrap items-center justify-between gap-3"
       >
@@ -70,6 +73,7 @@
         <div class="flex items-center gap-2">
           <span
             class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"
+            aria-hidden="true"
           ></span>
           <span
             class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-200"
@@ -78,19 +82,30 @@
         </div>
 
         <!-- Actions & Customization Controls -->
-        <div class="flex items-center flex-wrap gap-2 text-xs">
+        <div
+          class="flex items-center flex-wrap gap-2 text-xs"
+          role="toolbar"
+          aria-label="Controles de personalización y acciones"
+        >
           <!-- 8-Bit Retro Mode Toggle Switcher -->
           <button
             onclick="toggleRetroMode()"
             id="btn-retro-mode"
             title="Activar modo retro de 8 bits"
+            aria-label="Activar modo retro de 8 bits"
             class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-bold hover:bg-slate-300 dark:hover:bg-slate-700 transition"
           >
-            <span class="material-symbols-outlined text-[17px] icon-modern"
+            <span
+              class="material-symbols-outlined text-[17px] icon-modern"
+              aria-hidden="true"
               >sports_esports</span
             >
             <!-- Icono Mando Retro Pixel Art -->
-            <svg class="pixel-svg icon-retro" viewBox="0 0 16 16">
+            <svg
+              class="pixel-svg icon-retro"
+              viewBox="0 0 16 16"
+              aria-hidden="true"
+            >
               <path
                 d="M2 5h12v6H2zM4 7h2v2H4zM10 7h1v1h-1zm2 1h1v1h-1zm-1 1h1v1h-1z"
               />
@@ -101,26 +116,34 @@
           <!-- Language Selector Switcher -->
           <div
             class="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-full border border-slate-200 dark:border-slate-700"
+            role="group"
+            aria-label="Selector de idioma"
           >
             <button
               id="btn-lang-es"
               onclick="setLanguage('es')"
+              aria-label="Cambiar idioma a Español"
+              aria-pressed="true"
               class="px-2.5 py-1 rounded-full font-bold text-xs transition-all duration-200 bg-m3-primary text-white shadow-xs flex items-center gap-1"
             >
-              <span>🇪🇸</span> <span>ES</span>
+              <span aria-hidden="true">🇪🇸</span> <span>ES</span>
             </button>
             <button
               id="btn-lang-en"
               onclick="setLanguage('en')"
+              aria-label="Cambiar idioma a Inglés"
+              aria-pressed="false"
               class="px-2.5 py-1 rounded-full font-bold text-xs transition-all duration-200 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center gap-1"
             >
-              <span>🇬🇧</span> <span>EN</span>
+              <span aria-hidden="true">🇬🇧</span> <span>EN</span>
             </button>
           </div>
 
           <!-- 4 Color Tone Selectors -->
           <div
             class="mobile-floating-colors flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 p-1.5 rounded-full border border-slate-200 dark:border-slate-700"
+            role="group"
+            aria-label="Selector de tema de color"
           >
             <span
               class="text-[10px] font-bold text-slate-500 dark:text-slate-400 px-1 hidden sm:inline"
@@ -131,24 +154,28 @@
               onclick="setColorTheme('emerald')"
               id="btn-color-emerald"
               title="Tono Esmeralda"
+              aria-label="Seleccionar tema de color esmeralda"
               class="w-5 h-5 rounded-full bg-[#006c4c] ring-2 ring-white dark:ring-slate-900 hover:scale-110 transition shadow-xs"
             ></button>
             <button
               onclick="setColorTheme('ocean')"
               id="btn-color-ocean"
               title="Tono Azul Océano"
+              aria-label="Seleccionar tema de color azul océano"
               class="w-5 h-5 rounded-full bg-[#006399] ring-2 ring-white dark:ring-slate-900 hover:scale-110 transition shadow-xs"
             ></button>
             <button
               onclick="setColorTheme('indigo')"
               id="btn-color-indigo"
               title="Tono Índigo"
+              aria-label="Seleccionar tema de color índigo"
               class="w-5 h-5 rounded-full bg-[#5256a9] ring-2 ring-white dark:ring-slate-900 hover:scale-110 transition shadow-xs"
             ></button>
             <button
               onclick="setColorTheme('amber')"
               id="btn-color-amber"
               title="Tono Ámbar / Terracota"
+              aria-label="Seleccionar tema de color ámbar o terracota"
               class="w-5 h-5 rounded-full bg-[#984800] ring-2 ring-white dark:ring-slate-900 hover:scale-110 transition shadow-xs"
             ></button>
           </div>
@@ -158,15 +185,21 @@
             onclick="toggleDarkMode()"
             id="btn-dark-mode"
             title="Cambiar entre modo claro y oscuro"
+            aria-label="Cambiar entre modo claro y oscuro"
             class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition"
           >
             <span
               class="material-symbols-outlined text-[17px] icon-modern"
               id="theme-icon"
+              aria-hidden="true"
               >dark_mode</span
             >
             <!-- Luna Pixel Art -->
-            <svg class="pixel-svg icon-retro" viewBox="0 0 16 16">
+            <svg
+              class="pixel-svg icon-retro"
+              viewBox="0 0 16 16"
+              aria-hidden="true"
+            >
               <path
                 d="M6 2h4v2H6zm4 2h2v2h-2zm2 2h2v4h-2zm-2 4h2v2h-2zm-4 2h4v2H6zm-2-4h2v2H4zm0-4h2v4H4zm2-2h2v2H6z"
               />
@@ -177,13 +210,21 @@
           <!-- Print / Export PDF -->
           <button
             onclick="window.print()"
+            title="Imprimir o guardar como PDF"
+            aria-label="Imprimir currículum o guardar como PDF"
             class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-m3-primary text-white font-bold hover:brightness-110 shadow-sm transition"
           >
-            <span class="material-symbols-outlined text-[17px] icon-modern"
+            <span
+              class="material-symbols-outlined text-[17px] icon-modern"
+              aria-hidden="true"
               >print</span
             >
             <!-- Impresora Pixel Art -->
-            <svg class="pixel-svg icon-retro" viewBox="0 0 16 16">
+            <svg
+              class="pixel-svg icon-retro"
+              viewBox="0 0 16 16"
+              aria-hidden="true"
+            >
               <path d="M4 2h8v3H4zM2 6h12v5H2zm2 6h8v3H4zm7-4h2v1h-2z" />
             </svg>
             <span id="btn-print-text">Imprimir / PDF</span>
@@ -195,17 +236,24 @@
     <!-- Mobile Floating Controls -->
     <div
       class="mobile-floating-controls no-print"
-      aria-label="Controles rápidos"
+      aria-label="Controles rápidos para móviles"
     >
       <button
         onclick="toggleRetroMode()"
         title="Modo Retro 8-Bit"
+        aria-label="Alternar modo retro 8-bits"
         class="inline-flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-lg w-10 h-10 font-bold text-xs border border-slate-200 dark:border-slate-700"
       >
-        <span class="material-symbols-outlined text-[18px] icon-modern"
+        <span
+          class="material-symbols-outlined text-[18px] icon-modern"
+          aria-hidden="true"
           >sports_esports</span
         >
-        <svg class="pixel-svg icon-retro" viewBox="0 0 16 16">
+        <svg
+          class="pixel-svg icon-retro"
+          viewBox="0 0 16 16"
+          aria-hidden="true"
+        >
           <path
             d="M2 5h12v6H2zM4 7h2v2H4zM10 7h1v1h-1zm2 1h1v1h-1zm-1 1h1v1h-1z"
           />
@@ -214,14 +262,16 @@
       <button
         onclick="toggleLanguage()"
         title="Cambiar idioma (ES/EN)"
+        aria-label="Cambiar idioma entre Español e Inglés"
         class="inline-flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-lg w-10 h-10 font-bold text-xs border border-slate-200 dark:border-slate-700"
       >
-        <span id="mobile-lang-icon">🇬🇧</span>
+        <span id="mobile-lang-icon" aria-hidden="true">🇬🇧</span>
       </button>
       <button
         onclick="toggleDarkMode()"
         id="btn-dark-mode-mobile"
         title="Cambiar entre modo claro y oscuro"
+        aria-label="Cambiar modo de color de la interfaz"
         class="mobile-floating-theme inline-flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-lg"
       >
         <span
@@ -229,7 +279,11 @@
           aria-hidden="true"
           >dark_mode</span
         >
-        <svg class="pixel-svg icon-retro" viewBox="0 0 16 16">
+        <svg
+          class="pixel-svg icon-retro"
+          viewBox="0 0 16 16"
+          aria-hidden="true"
+        >
           <path
             d="M6 2h4v2H6zm4 2h2v2h-2zm2 2h2v4h-2zm-2 4h2v2h-2zm-4 2h4v2H6zm-2-4h2v2H4zm0-4h2v4H4zm2-2h2v2H6z"
           />
@@ -237,7 +291,8 @@
       </button>
       <div
         class="mobile-floating-colors flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 p-1.5 rounded-full border border-slate-200 dark:border-slate-700 shadow-lg"
-        aria-label="Seleccionar color"
+        role="group"
+        aria-label="Seleccionar tema de color"
       >
         <button
           onclick="setColorTheme('emerald')"
@@ -273,16 +328,20 @@
     <!-- Toast Notification -->
     <div
       id="toast"
+      role="status"
+      aria-live="polite"
       class="no-print fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-xs px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-2"
     >
       <span
         class="material-symbols-outlined text-emerald-400 dark:text-emerald-600 text-sm icon-modern"
+        aria-hidden="true"
         >check_circle</span
       >
       <!-- Check Pixel Art -->
       <svg
         class="pixel-svg icon-retro text-emerald-400 dark:text-emerald-600"
         viewBox="0 0 16 16"
+        aria-hidden="true"
       >
         <path
           d="M12 4h2v2h-2zm-2 2h2v2h-2zm-2 2h2v2H8zm-2 2h2v2H6zm-2-2h2v2H4zm-2-2h2v2H2z"
@@ -298,6 +357,7 @@
       >
         <!-- HERO / HEADER SECTION -->
         <section
+          aria-labelledby="perfil-titulo"
           class="relative bg-m3-surfaceContainer rounded-3xl p-6 sm:p-8 border border-m3-outlineVariant/40 mb-8 overflow-hidden"
         >
           <div
@@ -310,7 +370,7 @@
               >
                 <img
                   src="./profile_photo.jpeg"
-                  alt="Foto de Rubén Fernández Sánchez"
+                  alt="Fotografía de Rubén Fernández Sánchez"
                   class="w-full h-full object-cover"
                 />
               </div>
@@ -334,6 +394,7 @@
                 >
                   <span
                     class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"
+                    aria-hidden="true"
                   ></span>
                   <span class="lang-es">Búsqueda Activa de Empleo</span>
                   <span class="lang-en hidden"
@@ -343,6 +404,7 @@
               </div>
 
               <h1
+                id="perfil-titulo"
                 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight font-display mb-1"
               >
                 Rubén Fernández Sánchez
@@ -382,20 +444,23 @@
               </div>
 
               <!-- Contact & Social Links -->
-              <div
-                class="flex flex-wrap items-center justify-center md:justify-start gap-2 pt-1 text-xs"
+              <address
+                class="not-italic flex flex-wrap items-center justify-center md:justify-start gap-2 pt-1 text-xs"
+                aria-label="Información de contacto"
               >
                 <div
                   class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium shadow-xs"
                 >
                   <span
                     class="material-symbols-outlined text-m3-primary text-[17px] icon-modern"
+                    aria-hidden="true"
                     >location_on</span
                   >
                   <!-- Pin Ubicación Pixel Art -->
                   <svg
                     class="pixel-svg icon-retro text-m3-primary"
                     viewBox="0 0 16 16"
+                    aria-hidden="true"
                   >
                     <path
                       d="M6 2h4v2H6zm4 2h2v4h-2zm-2 4h2v2H8zm-2 2h2v2H6zm0-6h4v2H6z"
@@ -414,16 +479,19 @@
                         : 'Phone copied to clipboard',
                     )
                   "
+                  aria-label="Copiar número de teléfono: +34 644 86 54 06"
                   class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium hover:border-m3-primary transition shadow-xs group"
                 >
                   <span
                     class="material-symbols-outlined text-m3-primary text-[17px] icon-modern"
+                    aria-hidden="true"
                     >call</span
                   >
                   <!-- Teléfono Pixel Art -->
                   <svg
                     class="pixel-svg icon-retro text-m3-primary"
                     viewBox="0 0 16 16"
+                    aria-hidden="true"
                   >
                     <path
                       d="M3 3h4v3H5v2h2v2h2V9h2V7h3v4h-2v2H9v-2H7V9H5V7H3z"
@@ -432,11 +500,13 @@
                   <span>+34 644 86 54 06</span>
                   <span
                     class="material-symbols-outlined text-[14px] text-slate-400 group-hover:text-m3-primary icon-modern"
+                    aria-hidden="true"
                     >content_copy</span
                   >
                   <svg
                     class="pixel-svg icon-retro text-slate-400 group-hover:text-m3-primary"
                     viewBox="0 0 16 16"
+                    aria-hidden="true"
                   >
                     <path d="M3 3h7v7H3zm3 3h7v7H6z" />
                   </svg>
@@ -451,27 +521,32 @@
                         : 'Email copied to clipboard',
                     )
                   "
+                  aria-label="Copiar dirección de correo electrónico: fs.ruben02@gmail.com"
                   class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-medium hover:border-m3-primary transition shadow-xs group"
                 >
                   <span
                     class="material-symbols-outlined text-m3-primary text-[17px] icon-modern"
+                    aria-hidden="true"
                     >mail</span
                   >
                   <!-- Sobre Email Pixel Art -->
                   <svg
                     class="pixel-svg icon-retro text-m3-primary"
                     viewBox="0 0 16 16"
+                    aria-hidden="true"
                   >
                     <path d="M2 4h12v8H2zm2 2v2h8V6zm2 2v2h4V8z" />
                   </svg>
                   <span>fs.ruben02@gmail.com</span>
                   <span
                     class="material-symbols-outlined text-[14px] text-slate-400 group-hover:text-m3-primary icon-modern"
+                    aria-hidden="true"
                     >content_copy</span
                   >
                   <svg
                     class="pixel-svg icon-retro text-slate-400 group-hover:text-m3-primary"
                     viewBox="0 0 16 16"
+                    aria-hidden="true"
                   >
                     <path d="M3 3h7v7H3zm3 3h7v7H6z" />
                   </svg>
@@ -482,25 +557,31 @@
                   href="https://github.com/ruferson"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Perfil de GitHub de Rubén Fernández (se abre en pestaña nueva)"
                   class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-900 dark:bg-slate-700 text-white font-medium hover:bg-slate-800 transition shadow-xs"
                 >
                   <svg
                     class="w-3.5 h-3.5 fill-current icon-modern"
                     viewBox="0 0 24 24"
+                    aria-hidden="true"
                   >
                     <path
                       d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
                     />
                   </svg>
                   <!-- Código Pixel Art -->
-                  <svg class="pixel-svg icon-retro" viewBox="0 0 16 16">
+                  <svg
+                    class="pixel-svg icon-retro"
+                    viewBox="0 0 16 16"
+                    aria-hidden="true"
+                  >
                     <path
                       d="M5 4H3v2H1v4h2v2h2v-2H3V6h2zm6 0h2v2h2v4h-2v2h-2v-2h2V6h-2z"
                     />
                   </svg>
                   <span>github.com/ruferson</span>
                 </a>
-              </div>
+              </address>
             </div>
           </div>
         </section>
@@ -509,338 +590,406 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <!-- LEFT COLUMN: EXPERIENCE (7 Cols) -->
           <div class="lg:col-span-7 space-y-6">
-            <div
-              class="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2.5"
-            >
-              <span
-                class="w-8 h-8 rounded-xl bg-m3-primaryContainer text-m3-onPrimaryContainer flex items-center justify-center"
+            <section aria-labelledby="experiencia-titulo">
+              <div
+                class="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2.5"
               >
-                <span class="material-symbols-outlined text-[20px] icon-modern"
-                  >work</span
-                >
-                <!-- Maletín Pixel Art -->
-                <svg class="pixel-svg icon-retro" viewBox="0 0 16 16">
-                  <path d="M6 2h4v2H6zm-4 3h12v8H2zm2 2v2h8V7z" />
-                </svg>
-              </span>
-              <h2
-                class="text-xl font-bold text-slate-900 dark:text-white tracking-tight font-display"
-              >
-                <span class="lang-es">Experiencia Profesional</span>
-                <span class="lang-en hidden">Professional Experience</span>
-              </h2>
-            </div>
-
-            <div
-              class="space-y-6 relative before:absolute before:left-3 before:top-3 before:bottom-3 before:w-0.5 before:bg-slate-200 dark:before:bg-slate-800"
-            >
-              <!-- 1. Religious Volunteering -->
-              <article class="relative pl-8 break-inside-avoid">
                 <span
-                  class="absolute left-1.5 top-1.5 w-3.5 h-3.5 rounded-full bg-m3-primary ring-4 ring-white dark:ring-slate-900"
-                ></span>
-
-                <div
-                  class="bg-m3-surfaceContainer/50 rounded-2xl p-4 border border-slate-200/70 dark:border-slate-800"
+                  class="w-8 h-8 rounded-xl bg-m3-primaryContainer text-m3-onPrimaryContainer flex items-center justify-center"
                 >
-                  <div
-                    class="flex flex-wrap items-start justify-between gap-1 mb-1"
+                  <span
+                    class="material-symbols-outlined text-[20px] icon-modern"
+                    aria-hidden="true"
+                    >work</span
                   >
-                    <h3
-                      class="font-bold text-slate-900 dark:text-white text-base"
+                  <!-- Maletín Pixel Art -->
+                  <svg
+                    class="pixel-svg icon-retro"
+                    viewBox="0 0 16 16"
+                    aria-hidden="true"
+                  >
+                    <path d="M6 2h4v2H6zm-4 3h12v8H2zm2 2v2h8V7z" />
+                  </svg>
+                </span>
+                <h2
+                  id="experiencia-titulo"
+                  class="text-xl font-bold text-slate-900 dark:text-white tracking-tight font-display"
+                >
+                  <span class="lang-es">Experiencia Profesional</span>
+                  <span class="lang-en hidden">Professional Experience</span>
+                </h2>
+              </div>
+
+              <div
+                class="space-y-6 relative before:absolute before:left-3 before:top-3 before:bottom-3 before:w-0.5 before:bg-slate-200 dark:before:bg-slate-800 mt-4"
+              >
+                <!-- 2. NTT DATA -->
+                <article class="relative pl-8 break-inside-avoid">
+                  <span
+                    class="absolute left-1.5 top-1.5 w-3.5 h-3.5 rounded-full bg-slate-400 ring-4 ring-white dark:ring-slate-900"
+                    aria-hidden="true"
+                  ></span>
+
+                  <div
+                    class="bg-m3-surfaceContainer/50 rounded-2xl p-4 border border-slate-200/70 dark:border-slate-800"
+                  >
+                    <div
+                      class="flex flex-wrap items-start justify-between gap-1 mb-1"
                     >
-                      <span class="lang-es"
-                        >Voluntariado Religioso • Gestión IT & Compras</span
+                      <h3
+                        class="font-bold text-slate-900 dark:text-white text-base"
                       >
-                      <span class="lang-en hidden"
-                        >Religious Volunteer • IT & Purchasing Management</span
+                        <span class="lang-es"
+                          >Desarrollador Frontend • React</span
+                        >
+                        <span class="lang-en hidden"
+                          >Frontend Developer • React</span
+                        >
+                      </h3>
+                      <span
+                        class="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 px-2 py-0.5 rounded-md border border-slate-200 dark:border-slate-700"
+                        aria-label="Abril a Julio 2024"
                       >
-                    </h3>
-                    <span
-                      class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-100 dark:bg-amber-950 text-amber-900 dark:text-amber-200 border border-amber-300 dark:border-amber-800"
+                        <span class="lang-es" aria-hidden="true"
+                          >Abr 2024 – Jul 2024</span
+                        >
+                        <span class="lang-en hidden" aria-hidden="true"
+                          >Apr 2024 – Jul 2024</span
+                        >
+                      </span>
+                    </div>
+
+                    <div class="text-xs font-bold text-m3-primary mb-2">
+                      NTT DATA
+                    </div>
+
+                    <ul
+                      class="lang-es text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
+                    >
+                      <li>
+                        Desarrollo de componentes modulares utilizando
+                        <strong>React</strong>, <strong>TypeScript</strong> y
+                        <strong>Storybook</strong>.
+                      </li>
+                      <li>
+                        Migración y actualización de librerías de interfaz,
+                        resolviendo conflictos de dependencias.
+                      </li>
+                      <li>
+                        Colaboración multidisciplinar con equipos de diseño y QA
+                        bajo metodologías ágiles.
+                      </li>
+                    </ul>
+                    <ul
+                      class="lang-en hidden text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
+                    >
+                      <li>
+                        Developed modular UI components utilizing
+                        <strong>React</strong>, <strong>TypeScript</strong>, and
+                        <strong>Storybook</strong>.
+                      </li>
+                      <li>
+                        Migrated and updated UI libraries, resolving complex
+                        dependency conflicts.
+                      </li>
+                      <li>
+                        Multidisciplinary collaboration with design and QA teams
+                        under agile methodologies.
+                      </li>
+                    </ul>
+
+                    <div
+                      class="flex flex-wrap gap-1.5 pt-1"
+                      aria-label="Tecnologías usadas"
+                    >
+                      <span
+                        class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
+                        >React</span
+                      >
+                      <span
+                        class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
+                        >TypeScript</span
+                      >
+                      <span
+                        class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
+                        >Storybook</span
+                      >
+                    </div>
+                  </div>
+                </article>
+
+                <!-- 3. Looplan SL -->
+                <article class="relative pl-8 break-inside-avoid">
+                  <span
+                    class="absolute left-1.5 top-1.5 w-3.5 h-3.5 rounded-full bg-slate-400 ring-4 ring-white dark:ring-slate-900"
+                    aria-hidden="true"
+                  ></span>
+
+                  <div
+                    class="bg-m3-surfaceContainer/50 rounded-2xl p-4 border border-slate-200/70 dark:border-slate-800"
+                  >
+                    <div
+                      class="flex flex-wrap items-start justify-between gap-1 mb-1"
+                    >
+                      <h3
+                        class="font-bold text-slate-900 dark:text-white text-base"
+                      >
+                        <span class="lang-es"
+                          >Desarrollador Mobile • React Native</span
+                        >
+                        <span class="lang-en hidden"
+                          >Mobile Developer • React Native</span
+                        >
+                      </h3>
+                      <span
+                        class="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 px-2 py-0.5 rounded-md border border-slate-200 dark:border-slate-700"
+                        aria-label="Septiembre 2023 a Marzo 2024"
+                      >
+                        <span class="lang-es" aria-hidden="true"
+                          >Sept 2023 – Mar 2024</span
+                        >
+                        <span class="lang-en hidden" aria-hidden="true"
+                          >Sep 2023 – Mar 2024</span
+                        >
+                      </span>
+                    </div>
+
+                    <div class="text-xs font-bold text-m3-primary mb-2">
+                      Looplan SL
+                    </div>
+
+                    <ul
+                      class="lang-es text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
+                    >
+                      <li>
+                        Creación de aplicaciones móviles con
+                        <strong>React Native</strong> y
+                        <strong>TypeScript</strong>.
+                      </li>
+                      <li>
+                        Implementación de animaciones avanzadas, gestos fluidos
+                        y conexión a <strong>Firebase</strong>.
+                      </li>
+                    </ul>
+                    <ul
+                      class="lang-en hidden text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
+                    >
+                      <li>
+                        Engineered mobile applications using
+                        <strong>React Native</strong> and
+                        <strong>TypeScript</strong>.
+                      </li>
+                      <li>
+                        Implemented advanced animations, smooth touch gestures,
+                        and <strong>Firebase</strong> backend services
+                        integration.
+                      </li>
+                    </ul>
+
+                    <div
+                      class="flex flex-wrap gap-1.5 pt-1"
+                      aria-label="Tecnologías usadas"
+                    >
+                      <span
+                        class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
+                        >React Native</span
+                      >
+                      <span
+                        class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
+                        >Firebase</span
+                      >
+                    </div>
+                  </div>
+                </article>
+
+                <!-- 4. GreenPowerMonitor -->
+                <article class="relative pl-8 break-inside-avoid">
+                  <span
+                    class="absolute left-1.5 top-1.5 w-3.5 h-3.5 rounded-full bg-slate-400 ring-4 ring-white dark:ring-slate-900"
+                    aria-hidden="true"
+                  ></span>
+
+                  <div
+                    class="bg-m3-surfaceContainer/50 rounded-2xl p-4 border border-slate-200/70 dark:border-slate-800"
+                  >
+                    <div
+                      class="flex flex-wrap items-start justify-between gap-1 mb-1"
+                    >
+                      <h3
+                        class="font-bold text-slate-900 dark:text-white text-base"
+                      >
+                        <span class="lang-es"
+                          >Desarrollador Web • React & Angular</span
+                        >
+                        <span class="lang-en hidden"
+                          >Web Developer • React & Angular</span
+                        >
+                      </h3>
+                      <span
+                        class="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 px-2 py-0.5 rounded-md border border-slate-200 dark:border-slate-700"
+                        aria-label="Abril 2022 a Julio 2023"
+                      >
+                        <span class="lang-es" aria-hidden="true"
+                          >Abr 2022 – Jul 2023</span
+                        >
+                        <span class="lang-en hidden" aria-hidden="true"
+                          >Apr 2022 – Jul 2023</span
+                        >
+                      </span>
+                    </div>
+
+                    <div class="text-xs font-bold text-m3-primary mb-2">
+                      GreenPowerMonitor (DNV)
+                    </div>
+
+                    <ul
+                      class="lang-es text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
+                    >
+                      <li>
+                        Desarrollo de interfaces de usuario para monitorización
+                        energética en tiempo real.
+                      </li>
+                      <li>
+                        Visualización de gráficos complejos y consumo de APIs
+                        con
+                        <strong>GraphQL</strong>.
+                      </li>
+                    </ul>
+                    <ul
+                      class="lang-en hidden text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
+                    >
+                      <li>
+                        Built user interfaces for real-time energy monitoring
+                        platforms.
+                      </li>
+                      <li>
+                        Visualized complex data charts and consumed backend
+                        services via <strong>GraphQL</strong>.
+                      </li>
+                    </ul>
+
+                    <div
+                      class="flex flex-wrap gap-1.5 pt-1"
+                      aria-label="Tecnologías usadas"
+                    >
+                      <span
+                        class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
+                        >React</span
+                      >
+                      <span
+                        class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
+                        >Angular</span
+                      >
+                      <span
+                        class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
+                        >GraphQL</span
+                      >
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <section
+              aria-labelledby="voluntariado-titulo"
+              class="pt-4 opacity-80 hover:opacity-100 transition-opacity duration-300 border-t border-slate-200/50 dark:border-slate-800/50"
+            >
+              <div class="flex items-center gap-2 mb-4">
+                <span
+                  class="material-symbols-outlined text-[18px] text-slate-500 dark:text-slate-400"
+                  aria-hidden="true"
+                  >volunteer_activism</span
+                >
+                <h2
+                  id="voluntariado-titulo"
+                  class="text-sm font-bold text-slate-700 dark:text-slate-300 tracking-tight uppercase"
+                >
+                  <span class="lang-es">Experiencia de Voluntariado</span>
+                  <span class="lang-en hidden">Volunteer Experience</span>
+                </h2>
+              </div>
+
+              <div
+                class="relative pl-6 before:absolute before:left-1 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-200 dark:before:bg-slate-800"
+              >
+                <!-- 1. Religious Volunteering -->
+                <article class="relative break-inside-avoid">
+                  <span
+                    class="absolute -left-6 top-1.5 w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-600 ring-2 ring-white dark:ring-slate-900"
+                    aria-hidden="true"
+                  ></span>
+
+                  <div
+                    class="bg-slate-50/50 dark:bg-slate-900/30 rounded-xl p-3 border border-slate-100 dark:border-slate-800/50"
+                  >
+                    <div
+                      class="flex flex-wrap items-start justify-between gap-1 mb-1"
+                    >
+                      <h3
+                        class="font-semibold text-slate-800 dark:text-slate-200 text-sm"
+                      >
+                        <span class="lang-es">Gestión IT & Compras</span>
+                        <span class="lang-en hidden"
+                          >IT & Purchasing Management</span
+                        >
+                      </h3>
+                      <span
+                        class="text-[10px] font-medium text-slate-500 dark:text-slate-400"
+                        aria-label="Septiembre 2024 a Agosto 2026"
+                      >
+                        <span class="lang-es" aria-hidden="true"
+                          >Sept 2024 – Ago 2026</span
+                        >
+                        <span class="lang-en hidden" aria-hidden="true"
+                          >Sep 2024 – Aug 2026</span
+                        >
+                      </span>
+                    </div>
+
+                    <div
+                      class="text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-2 italic"
                     >
                       <span class="lang-es">Voluntariado No Remunerado</span>
                       <span class="lang-en hidden">Unpaid Volunteer Work</span>
-                    </span>
+                    </div>
+
+                    <ul
+                      class="lang-es text-[11px] text-slate-500 dark:text-slate-400 space-y-1 list-disc list-inside leading-relaxed"
+                    >
+                      <li>
+                        Contacto con proveedores para adquisición de artículos y
+                        alquiler de maquinaria.
+                      </li>
+                      <li>
+                        Gestión básica de permisos informáticos y accesos dentro
+                        de la organización.
+                      </li>
+                    </ul>
+                    <ul
+                      class="lang-en hidden text-[11px] text-slate-500 dark:text-slate-400 space-y-1 list-disc list-inside leading-relaxed"
+                    >
+                      <li>
+                        Communication with vendors and suppliers for item
+                        procurement and machinery rentals.
+                      </li>
+                      <li>
+                        Basic management of user IT permissions and internal
+                        organizational access control.
+                      </li>
+                    </ul>
                   </div>
-
-                  <div
-                    class="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2"
-                  >
-                    <span class="lang-es">Sept 2024 – Ago 2026</span>
-                    <span class="lang-en hidden">Sep 2024 – Aug 2026</span>
-                  </div>
-
-                  <ul
-                    class="lang-es text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed"
-                  >
-                    <li>
-                      Contacto con proveedores para la adquisición de artículos
-                      y alquiler de maquinaria.
-                    </li>
-                    <li>
-                      Gestión básica de permisos informáticos y accesos dentro
-                      de la organización.
-                    </li>
-                  </ul>
-                  <ul
-                    class="lang-en hidden text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed"
-                  >
-                    <li>
-                      Communication with vendors and suppliers for item
-                      procurement and machinery rentals.
-                    </li>
-                    <li>
-                      Basic management of user IT permissions and internal
-                      organizational access control.
-                    </li>
-                  </ul>
-                </div>
-              </article>
-
-              <!-- 2. NTT DATA -->
-              <article class="relative pl-8 break-inside-avoid">
-                <span
-                  class="absolute left-1.5 top-1.5 w-3.5 h-3.5 rounded-full bg-slate-400 ring-4 ring-white dark:ring-slate-900"
-                ></span>
-
-                <div
-                  class="bg-m3-surfaceContainer/50 rounded-2xl p-4 border border-slate-200/70 dark:border-slate-800"
-                >
-                  <div
-                    class="flex flex-wrap items-start justify-between gap-1 mb-1"
-                  >
-                    <h3
-                      class="font-bold text-slate-900 dark:text-white text-base"
-                    >
-                      <span class="lang-es"
-                        >Desarrollador Frontend • React</span
-                      >
-                      <span class="lang-en hidden"
-                        >Frontend Developer • React</span
-                      >
-                    </h3>
-                    <span
-                      class="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 px-2 py-0.5 rounded-md border border-slate-200 dark:border-slate-700"
-                    >
-                      <span class="lang-es">Abr 2024 – Jul 2024</span>
-                      <span class="lang-en hidden">Apr 2024 – Jul 2024</span>
-                    </span>
-                  </div>
-
-                  <div class="text-xs font-bold text-m3-primary mb-2">
-                    NTT DATA
-                  </div>
-
-                  <ul
-                    class="lang-es text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
-                  >
-                    <li>
-                      Desarrollo de componentes modulares utilizando
-                      <strong>React</strong>, <strong>TypeScript</strong> y
-                      <strong>Storybook</strong>.
-                    </li>
-                    <li>
-                      Migración y actualización de librerías de interfaz,
-                      resolviendo conflictos de dependencias.
-                    </li>
-                    <li>
-                      Colaboración multidisciplinar con equipos de diseño y QA
-                      bajo metodologías ágiles.
-                    </li>
-                  </ul>
-                  <ul
-                    class="lang-en hidden text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
-                  >
-                    <li>
-                      Developed modular UI components utilizing
-                      <strong>React</strong>, <strong>TypeScript</strong>, and
-                      <strong>Storybook</strong>.
-                    </li>
-                    <li>
-                      Migrated and updated UI libraries, resolving complex
-                      dependency conflicts.
-                    </li>
-                    <li>
-                      Multidisciplinary collaboration with design and QA teams
-                      under agile methodologies.
-                    </li>
-                  </ul>
-
-                  <div class="flex flex-wrap gap-1.5 pt-1">
-                    <span
-                      class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
-                      >React</span
-                    >
-                    <span
-                      class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
-                      >TypeScript</span
-                    >
-                    <span
-                      class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
-                      >Storybook</span
-                    >
-                  </div>
-                </div>
-              </article>
-
-              <!-- 3. Looplan SL -->
-              <article class="relative pl-8 break-inside-avoid">
-                <span
-                  class="absolute left-1.5 top-1.5 w-3.5 h-3.5 rounded-full bg-slate-400 ring-4 ring-white dark:ring-slate-900"
-                ></span>
-
-                <div
-                  class="bg-m3-surfaceContainer/50 rounded-2xl p-4 border border-slate-200/70 dark:border-slate-800"
-                >
-                  <div
-                    class="flex flex-wrap items-start justify-between gap-1 mb-1"
-                  >
-                    <h3
-                      class="font-bold text-slate-900 dark:text-white text-base"
-                    >
-                      <span class="lang-es"
-                        >Desarrollador Mobile • React Native</span
-                      >
-                      <span class="lang-en hidden"
-                        >Mobile Developer • React Native</span
-                      >
-                    </h3>
-                    <span
-                      class="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 px-2 py-0.5 rounded-md border border-slate-200 dark:border-slate-700"
-                    >
-                      <span class="lang-es">Sept 2023 – Mar 2024</span>
-                      <span class="lang-en hidden">Sep 2023 – Mar 2024</span>
-                    </span>
-                  </div>
-
-                  <div class="text-xs font-bold text-m3-primary mb-2">
-                    Looplan SL
-                  </div>
-
-                  <ul
-                    class="lang-es text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
-                  >
-                    <li>
-                      Creación de aplicaciones móviles con
-                      <strong>React Native</strong> y
-                      <strong>TypeScript</strong>.
-                    </li>
-                    <li>
-                      Implementación de animaciones avanzadas, gestos fluidos y
-                      conexión a <strong>Firebase</strong>.
-                    </li>
-                  </ul>
-                  <ul
-                    class="lang-en hidden text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
-                  >
-                    <li>
-                      Engineered mobile applications using
-                      <strong>React Native</strong> and
-                      <strong>TypeScript</strong>.
-                    </li>
-                    <li>
-                      Implemented advanced animations, smooth touch gestures,
-                      and <strong>Firebase</strong> backend services
-                      integration.
-                    </li>
-                  </ul>
-
-                  <div class="flex flex-wrap gap-1.5 pt-1">
-                    <span
-                      class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
-                      >React Native</span
-                    >
-                    <span
-                      class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
-                      >Firebase</span
-                    >
-                  </div>
-                </div>
-              </article>
-
-              <!-- 4. GreenPowerMonitor -->
-              <article class="relative pl-8 break-inside-avoid">
-                <span
-                  class="absolute left-1.5 top-1.5 w-3.5 h-3.5 rounded-full bg-slate-400 ring-4 ring-white dark:ring-slate-900"
-                ></span>
-
-                <div
-                  class="bg-m3-surfaceContainer/50 rounded-2xl p-4 border border-slate-200/70 dark:border-slate-800"
-                >
-                  <div
-                    class="flex flex-wrap items-start justify-between gap-1 mb-1"
-                  >
-                    <h3
-                      class="font-bold text-slate-900 dark:text-white text-base"
-                    >
-                      <span class="lang-es"
-                        >Desarrollador Web • React & Angular</span
-                      >
-                      <span class="lang-en hidden"
-                        >Web Developer • React & Angular</span
-                      >
-                    </h3>
-                    <span
-                      class="text-xs font-semibold text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 px-2 py-0.5 rounded-md border border-slate-200 dark:border-slate-700"
-                    >
-                      <span class="lang-es">Abr 2022 – Jul 2023</span>
-                      <span class="lang-en hidden">Apr 2022 – Jul 2023</span>
-                    </span>
-                  </div>
-
-                  <div class="text-xs font-bold text-m3-primary mb-2">
-                    GreenPowerMonitor (DNV)
-                  </div>
-
-                  <ul
-                    class="lang-es text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
-                  >
-                    <li>
-                      Desarrollo de interfaces de usuario para monitorización
-                      energética en tiempo real.
-                    </li>
-                    <li>
-                      Visualización de gráficos complejos y consumo de APIs con
-                      <strong>GraphQL</strong>.
-                    </li>
-                  </ul>
-                  <ul
-                    class="lang-en hidden text-xs text-slate-600 dark:text-slate-300 space-y-1.5 list-disc list-inside leading-relaxed mb-3"
-                  >
-                    <li>
-                      Built user interfaces for real-time energy monitoring
-                      platforms.
-                    </li>
-                    <li>
-                      Visualized complex data charts and consumed backend
-                      services via <strong>GraphQL</strong>.
-                    </li>
-                  </ul>
-
-                  <div class="flex flex-wrap gap-1.5 pt-1">
-                    <span
-                      class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
-                      >React</span
-                    >
-                    <span
-                      class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
-                      >Angular</span
-                    >
-                    <span
-                      class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300"
-                      >GraphQL</span
-                    >
-                  </div>
-                </div>
-              </article>
-            </div>
+                </article>
+              </div>
+            </section>
           </div>
 
           <!-- RIGHT COLUMN: EDUCATION & SKILLS (5 Cols) -->
           <div class="lg:col-span-5 space-y-6">
             <!-- ACADEMIC EDUCATION -->
-            <div class="space-y-4 break-inside-avoid">
+            <section
+              class="space-y-4 break-inside-avoid"
+              aria-labelledby="educacion-titulo"
+            >
               <div
                 class="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2.5"
               >
@@ -849,16 +998,22 @@
                 >
                   <span
                     class="material-symbols-outlined text-[20px] icon-modern"
+                    aria-hidden="true"
                     >school</span
                   >
                   <!-- Birrete Educación Pixel Art -->
-                  <svg class="pixel-svg icon-retro" viewBox="0 0 16 16">
+                  <svg
+                    class="pixel-svg icon-retro"
+                    viewBox="0 0 16 16"
+                    aria-hidden="true"
+                  >
                     <path
                       d="M8 2L1 5l7 3 7-3zm0 5L3 5.5V9l5 2 5-2V5.5zM14 8v3h1V8z"
                     />
                   </svg>
                 </span>
                 <h2
+                  id="educacion-titulo"
                   class="text-xl font-bold text-slate-900 dark:text-white tracking-tight font-display"
                 >
                   <span class="lang-es">Formación Académica</span>
@@ -866,7 +1021,7 @@
                 </h2>
               </div>
 
-              <div
+              <article
                 class="bg-m3-surfaceContainer/50 rounded-2xl p-4 border border-slate-200/70 dark:border-slate-800"
               >
                 <h3
@@ -883,7 +1038,7 @@
                 <div
                   class="text-[11px] text-slate-500 dark:text-slate-400 mb-2"
                 >
-                  2020 – 2022
+                  <span class="sr-only">Años de estudio: </span>2020 – 2022
                 </div>
 
                 <div class="space-y-1.5 text-xs">
@@ -892,12 +1047,14 @@
                   >
                     <span
                       class="material-symbols-outlined text-[16px] text-amber-600 icon-modern"
+                      aria-hidden="true"
                       >workspace_premium</span
                     >
                     <!-- Medalla Pixel Art -->
                     <svg
                       class="pixel-svg icon-retro text-amber-600"
                       viewBox="0 0 16 16"
+                      aria-hidden="true"
                     >
                       <path d="M6 2h4v4H6zm0 4h4v6H6zm2 6h2v2H8z" />
                     </svg>
@@ -913,12 +1070,14 @@
                   >
                     <span
                       class="material-symbols-outlined text-[16px] text-blue-600 icon-modern"
+                      aria-hidden="true"
                       >emoji_events</span
                     >
                     <!-- Trofeo Pixel Art -->
                     <svg
                       class="pixel-svg icon-retro text-blue-600"
                       viewBox="0 0 16 16"
+                      aria-hidden="true"
                     >
                       <path
                         d="M3 3h10v4H3zm2 4h6v2H5zm2 2h2v3H7zm-2 3h6v2H5z"
@@ -932,9 +1091,9 @@
                     >
                   </div>
                 </div>
-              </div>
+              </article>
 
-              <div
+              <article
                 class="bg-m3-surfaceContainer/50 rounded-2xl p-4 border border-slate-200/70 dark:border-slate-800"
               >
                 <h3
@@ -952,9 +1111,9 @@
                   <span class="lang-es">Agosto 2023</span>
                   <span class="lang-en hidden">August 2023</span>
                 </div>
-              </div>
+              </article>
 
-              <div
+              <article
                 class="bg-m3-surfaceContainer/50 rounded-2xl p-4 border border-slate-200/70 dark:border-slate-800"
               >
                 <div class="flex items-center justify-between">
@@ -975,11 +1134,14 @@
                     <span class="lang-en hidden">Level B2</span>
                   </span>
                 </div>
-              </div>
-            </div>
+              </article>
+            </section>
 
             <!-- SKILLS -->
-            <div class="space-y-4 break-inside-avoid">
+            <section
+              class="space-y-4 break-inside-avoid"
+              aria-labelledby="habilidades-titulo"
+            >
               <div
                 class="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2.5"
               >
@@ -988,16 +1150,22 @@
                 >
                   <span
                     class="material-symbols-outlined text-[20px] icon-modern"
+                    aria-hidden="true"
                     >stars</span
                   >
                   <!-- Estrella Pixel Art -->
-                  <svg class="pixel-svg icon-retro" viewBox="0 0 16 16">
+                  <svg
+                    class="pixel-svg icon-retro"
+                    viewBox="0 0 16 16"
+                    aria-hidden="true"
+                  >
                     <path
                       d="M7 2h2v3H7zm-3 3h8v2H4zm-2 2h12v2H2zm2 2h8v2H4zm3 2h2v3H7z"
                     />
                   </svg>
                 </span>
                 <h2
+                  id="habilidades-titulo"
                   class="text-xl font-bold text-slate-900 dark:text-white tracking-tight font-display"
                 >
                   <span class="lang-es">Aptitudes & Competencias</span>
@@ -1015,11 +1183,13 @@
                   >
                     <span
                       class="material-symbols-outlined text-m3-primary text-[16px] icon-modern"
+                      aria-hidden="true"
                       >code</span
                     >
                     <svg
                       class="pixel-svg icon-retro text-m3-primary"
                       viewBox="0 0 16 16"
+                      aria-hidden="true"
                     >
                       <path
                         d="M5 4H3v2H1v4h2v2h2v-2H3V6h2zm6 0h2v2h2v4h-2v2h-2v-2h2V6h-2z"
@@ -1050,12 +1220,14 @@
                   >
                     <span
                       class="material-symbols-outlined text-m3-primary text-[16px] icon-modern"
+                      aria-hidden="true"
                       >psychology</span
                     >
                     <!-- Cerebro/Mente Pixel Art -->
                     <svg
                       class="pixel-svg icon-retro text-m3-primary"
                       viewBox="0 0 16 16"
+                      aria-hidden="true"
                     >
                       <path d="M4 3h8v2H4zm-2 2h12v6H2zm2 6h8v2H4z" />
                     </svg>
@@ -1090,12 +1262,14 @@
                   >
                     <span
                       class="material-symbols-outlined text-m3-primary text-[16px] icon-modern"
+                      aria-hidden="true"
                       >build</span
                     >
                     <!-- Herramienta / Llave Pixel Art -->
                     <svg
                       class="pixel-svg icon-retro text-m3-primary"
                       viewBox="0 0 16 16"
+                      aria-hidden="true"
                     >
                       <path
                         d="M10 2h4v4h-2V4h-2zm-6 6h4v2H4zm-2 2h4v2H2zm-1 2h3v3H1z"
@@ -1134,13 +1308,14 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
           </div>
         </div>
 
         <!-- FOOTER -->
         <footer
           class="mt-8 pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4 text-[11px] text-slate-500 dark:text-slate-400"
+          aria-label="Pie de página del currículum"
         >
           <div>
             <span class="lang-es">Cartagena (Murcia), España</span>
@@ -1229,6 +1404,7 @@
           retroBtn.title = isRetroMode
             ? i18n[currentLang].titleRetroModeOn
             : i18n[currentLang].titleRetroModeOff;
+          retroBtn.setAttribute("aria-label", retroBtn.title);
         }
       }
 
@@ -1273,8 +1449,10 @@
 
           btnEs.className =
             "px-2.5 py-1 rounded-full font-bold text-xs transition-all duration-200 bg-m3-primary text-white shadow-xs flex items-center gap-1";
+          btnEs.setAttribute("aria-pressed", "true");
           btnEn.className =
             "px-2.5 py-1 rounded-full font-bold text-xs transition-all duration-200 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center gap-1";
+          btnEn.setAttribute("aria-pressed", "false");
 
           if (mobileLangIcon) mobileLangIcon.innerText = "🇬🇧";
         } else {
@@ -1283,8 +1461,10 @@
 
           btnEn.className =
             "px-2.5 py-1 rounded-full font-bold text-xs transition-all duration-200 bg-m3-primary text-white shadow-xs flex items-center gap-1";
+          btnEn.setAttribute("aria-pressed", "true");
           btnEs.className =
             "px-2.5 py-1 rounded-full font-bold text-xs transition-all duration-200 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center gap-1";
+          btnEs.setAttribute("aria-pressed", "false");
 
           if (mobileLangIcon) mobileLangIcon.innerText = "🇪🇸";
         }
@@ -1302,9 +1482,17 @@
         const darkModeBtnMobile = document.getElementById(
           "btn-dark-mode-mobile",
         );
-        if (darkModeBtn) darkModeBtn.title = i18n[lang].titleDarkMode;
-        if (darkModeBtnMobile)
+        if (darkModeBtn) {
+          darkModeBtn.title = i18n[lang].titleDarkMode;
+          darkModeBtn.setAttribute("aria-label", i18n[lang].titleDarkMode);
+        }
+        if (darkModeBtnMobile) {
           darkModeBtnMobile.title = i18n[lang].titleDarkMode;
+          darkModeBtnMobile.setAttribute(
+            "aria-label",
+            i18n[lang].titleDarkMode,
+          );
+        }
 
         const setBtnTitle = (id, titleText) => {
           const el = document.getElementById(id);
